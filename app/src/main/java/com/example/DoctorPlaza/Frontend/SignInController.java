@@ -13,11 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import com.example.DoctorPlaza.Frontend.SignUpController;
 
- 
 /**
  * FXML Controller class
  *
- * @author HP
+ * @author Admin
  */
 public class SignInController implements Initializable {
 
@@ -36,7 +35,7 @@ public class SignInController implements Initializable {
 
     @FXML
     private void btnSignUpAction(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignUp.fxml", new SignUpController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignIn.fxml", new SignUpController());
     }
     
 }
