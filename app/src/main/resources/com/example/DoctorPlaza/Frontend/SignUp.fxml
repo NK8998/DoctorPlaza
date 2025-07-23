@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-background-color: #f6f6f6;" stylesheets="@../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefWidth="300.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="47.66666030883789" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="252.99999237060547" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <children>
+                  <GridPane prefHeight="88.0" prefWidth="340.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.6666768391927" minWidth="10.0" prefWidth="168.66666666666666" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="177.33331298828125" minWidth="10.0" prefWidth="171.33333333333334" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label style="-fx-text-fill: #8d8989;" text="Sign Up" textFill="#8d8989">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" hgap="20.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="95.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../../Downloads/facebook-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../../Downloads/twitter-48.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </GridPane>
+                  <Button maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: linear-gradient(to right ,rgba(227, 64, 69, 1) 0%, rgba(242, 63, 87, 1) 50%, rgba(250, 65, 117, 1) 100%); -fx-background-radius: 50; -fx-font-size: 12; -fx-text-fill: white;" text="Sign Up" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField fx:id="txtUsername" maxHeight="1.7976931348623157E308" promptText="Full Name" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" styleClass="form-input" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label style="-fx-text-fill: #363636; -fx-font-weight: bold;" styleClass="form-label" text="Email" textFill="#e2e2e2" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField maxHeight="1.7976931348623157E308" promptText="Enter Email" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" styleClass="form-input" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label style="-fx-text-fill: #363636; -fx-font-weight: bold;" styleClass="form-label" text="Full Name" textFill="#ededed" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label styleClass="form-label" text="Password" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                  <Label styleClass="form-label" text="Confirm Password" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                  <PasswordField promptText="Password" styleClass="form-input" GridPane.rowIndex="6" />
+                  <PasswordField promptText="Confirm Password" styleClass="form-input" GridPane.rowIndex="8" />
+               </children>
+            </GridPane>
+            <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;" text="Sign Up now!" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </Label>
+                  <Label maxWidth="1.7976931348623157E308" style="-fx-alignment: center; -fx-text-fill: #EDEDED; -fx-font-size: 11;" text="Already have an account?" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </Label>
+                  <GridPane prefHeight="40.0" prefWidth="172.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="80.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnSignInAction" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 50; -fx-background-color: transparent; -fx-background-radius: 50; -fx-font-size: 11; -fx-text-fill: white;" text="Sign In" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin></Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </FlowPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,61 @@
+
+.check-box > .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #F24153;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-pref-height: 14.5;
+    -fx-pref-width: 14.5;
+    -fx-max-height: 14.5;
+    -fx-max-width: 14.5;
+}
+
+.check-box:selected > .box{
+    -fx-background-color: #F24153;
+    -fx-border-radius: 4px;
+}
+
+.check-box:selected > .box > .mark {
+    -fx-background-color: white;
+}
+
+.form-label{
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill:  #363636;
+}
+
+.form-input{
+    -fx-background-radius: 50px;
+    -fx-background-color:  #ededed;
+    -fx-padding: 10px;
+}
+
+/* Remove group borders and spacing */
+.formsfx-group {
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}
+
+
+.simple-control .label {
+    -fx-min-width: 180px;
+    -fx-pref-width: 180px;
+    -fx-max-width: 180px;
+    -fx-padding: 0px 10px 0px 0px;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px 10px 0px 0px; /* Top, Right, Bottom, Left */
+}
+
+
+.simple-control .text-field,
+.simple-control .password-field,
+.simple-control .text-area {
+    -fx-hgrow: always;
+    -fx-pref-width: Infinity;
+    -fx-max-width: Infinity;
+    -fx-min-width: 0;
+    -fx-padding: 5px; 
+}
