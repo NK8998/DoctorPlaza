@@ -16,6 +16,6 @@ public class HelloController {
     
     @GetMapping("/")
     public String index(){
-        return "Hello from here";
+        return "Hello from here with some sugar";
     }
 }
