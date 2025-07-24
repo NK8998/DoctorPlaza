@@ -54,7 +54,6 @@
     -fx-pref-width: Infinity;
     -fx-max-width: Infinity;
     -fx-min-width: 0;
-<<<<<<< HEAD
     -fx-padding: 5px;
 }
 
@@ -97,7 +96,3 @@
     -fx-background-radius: 25px;
     -fx-padding: 10px 20px;
 }
-=======
-    -fx-padding: 5px; 
-}
->>>>>>> 9cb37d8a337b429b32d5c9c3df5e8b717cab76c3
