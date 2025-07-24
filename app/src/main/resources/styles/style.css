@@ -9,7 +9,7 @@
     -fx-max-width: 14.5;
 }
 
-.check-box:selected > .box {
+.check-box:selected > .box{
     -fx-background-color: #F24153;
     -fx-border-radius: 4px;
 }
@@ -18,13 +18,13 @@
     -fx-background-color: white;
 }
 
-.form-label {
+.form-label{
     -fx-font-size: 11px;
     -fx-font-weight: bold;
     -fx-text-fill:  #363636;
 }
 
-.form-input {
+.form-input{
     -fx-background-radius: 50px;
     -fx-background-color:  #ededed;
     -fx-padding: 10px;
@@ -38,14 +38,16 @@
     -fx-border-insets: 0;
 }
 
+
 .simple-control .label {
     -fx-min-width: 180px;
     -fx-pref-width: 180px;
     -fx-max-width: 180px;
     -fx-padding: 0px 10px 0px 0px;
     -fx-border-color: transparent;
-    -fx-border-width: 0px 10px 0px 0px;
+    -fx-border-width: 0px 10px 0px 0px; /* Top, Right, Bottom, Left */
 }
+
 
 .simple-control .text-field,
 .simple-control .password-field,
@@ -54,50 +56,5 @@
     -fx-pref-width: Infinity;
     -fx-max-width: Infinity;
     -fx-min-width: 0;
-<<<<<<< HEAD
-    -fx-padding: 5px;
-}
-
-/* ===================== */
-/* Receptionist Dashboard Theme */
-/* ===================== */
-
-.root {
-    -fx-background-color: #f6f7fb;
-    -fx-font-family: "Segoe UI", sans-serif;
-}
-
-/* Welcome & Header Labels */
-.label-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #363636;
-}
-
-.label-subtitle {
-    -fx-font-size: 16px;
-    -fx-text-fill: #666666;
-}
-
-/* Doctor Info Labels */
-.label-field {
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-}
-
-.label-value {
-    -fx-text-fill: #444444;
-}
-
-/* Buttons */
-.button {
-    -fx-background-color: linear-gradient(to right, #f24153, #e33e87);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 25px;
-    -fx-padding: 10px 20px;
-}
-=======
     -fx-padding: 5px; 
 }
->>>>>>> 9cb37d8a337b429b32d5c9c3df5e8b717cab76c3
