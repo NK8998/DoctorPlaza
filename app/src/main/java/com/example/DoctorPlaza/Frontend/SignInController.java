@@ -35,7 +35,7 @@ public class SignInController implements Initializable {
 
     @FXML
     private void btnSignUpAction(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignIn.fxml", new SignUpController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignUP.fxml", new SignUpController());
     }
     
 }
