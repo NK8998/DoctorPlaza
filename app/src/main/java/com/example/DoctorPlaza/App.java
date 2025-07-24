@@ -10,8 +10,12 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 public class App extends Application {
+    
+    private ConfigurableApplicationContext springContext;
+
     public String getGreeting() {
         return "Hello World!";
     }
@@ -19,9 +23,9 @@ public class App extends Application {
     @Override
     public void init() {
         Thread backendThread = new Thread(() -> {
-            SpringApplication.run(SpringBootLauncher.class); // Your backend class
+            springContext = SpringApplication.run(SpringBootLauncher.class); 
         });
-        backendThread.setDaemon(true); // Don't block app shutdown
+        backendThread.setDaemon(true);
         backendThread.start();
     }
     
@@ -30,8 +34,18 @@ public class App extends Application {
         SceneManager.setStage(stage);
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignIn.fxml", new SignInController());
     }
+    
+    @Override
+    public void stop() {
+        if (springContext != null) {
+            System.out.println("Shutting down Spring Boot context...");
+            springContext.close();
+        } else {
+            System.out.println("No Spring context found to shut down.");
+        }
+    }
 
     public static void main(String[] args) {
-       launch();
+       launch(args);
     }
 }

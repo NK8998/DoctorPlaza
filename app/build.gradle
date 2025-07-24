@@ -10,8 +10,9 @@ repositories {
 }
 
 javafx {
-    version = "21"
+    
     modules = ['javafx.controls', 'javafx.fxml']
+    version = "21"
 }
 
 dependencies {
@@ -20,8 +21,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     
     implementation 'me.paulschwarz:spring-dotenv:3.0.0' 
+    implementation 'org.postgresql:postgresql:42.7.1'
 
     implementation libs.guava
 

@@ -6,21 +6,15 @@ package com.example.DoctorPlaza.Backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+
 
 /**
  *
  * @author HP
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication
 public class SpringBootLauncher {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-           SpringApplication.run(SpringBootLauncher.class, args);
-
+        SpringApplication.run(SpringBootLauncher.class, args);
     }
-    
 }
