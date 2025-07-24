@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-color: #f6f6f6;" stylesheets="@../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane style="-fx-background-color: #f6f6f6;" stylesheets="@../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.SignUpController">
    <center>
       <GridPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -36,6 +37,8 @@
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -75,7 +78,7 @@
                         </FlowPane>
                      </children>
                   </GridPane>
-                  <Button maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: linear-gradient(to right ,rgba(227, 64, 69, 1) 0%, rgba(242, 63, 87, 1) 50%, rgba(250, 65, 117, 1) 100%); -fx-background-radius: 50; -fx-font-size: 12; -fx-text-fill: white;" text="Sign Up" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                  <Button fx:id="btnSignup" maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" onAction="#btnSignUpAction" prefHeight="35.0" style="-fx-background-color: linear-gradient(to right ,rgba(227, 64, 69, 1) 0%, rgba(242, 63, 87, 1) 50%, rgba(250, 65, 117, 1) 100%); -fx-background-radius: 50; -fx-font-size: 12; -fx-text-fill: white;" text="Sign Up" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="11" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin>
@@ -93,7 +96,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <TextField maxHeight="1.7976931348623157E308" promptText="Enter Email" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" styleClass="form-input" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                  <TextField fx:id="txtEmail" maxHeight="1.7976931348623157E308" promptText="Enter Email" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" styleClass="form-input" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </GridPane.margin>
@@ -107,9 +110,12 @@
                      </GridPane.margin>
                   </Label>
                   <Label styleClass="form-label" text="Password" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                  <PasswordField fx:id="txtPassword" promptText="Password" styleClass="form-input" GridPane.rowIndex="6" />
                   <Label styleClass="form-label" text="Confirm Password" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-                  <PasswordField promptText="Password" styleClass="form-input" GridPane.rowIndex="6" />
-                  <PasswordField promptText="Confirm Password" styleClass="form-input" GridPane.rowIndex="8" />
+                  <PasswordField fx:id="txtConfirm" promptText="Confirm Password" styleClass="form-input" GridPane.rowIndex="8" />
+                  <Label styleClass="form-label" text="Role" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                  <ChoiceBox fx:id="roleChoiceBox" style="-fx-background-radius: 50; -fx-background-color: #ededed;" GridPane.rowIndex="10" />
+                  <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 11;" GridPane.rowIndex="12" />
                </children>
             </GridPane>
             <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -135,7 +141,8 @@
                         <Button fx:id="btnSignIn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="80.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnSignInAction" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 50; -fx-background-color: transparent; -fx-background-radius: 50; -fx-font-size: 11; -fx-text-fill: white;" text="Sign In" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                            <GridPane.margin>
                               <Insets top="5.0" />
-                           </GridPane.margin></Button>
+                           </GridPane.margin>
+                        </Button>
                      </children>
                   </GridPane>
                </children>
