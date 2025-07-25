@@ -4,15 +4,16 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
+import com.example.DoctorPlaza.Backend.dto.LoginRequest;
+import com.example.DoctorPlaza.Backend.dto.SignupRequest;
+import com.example.DoctorPlaza.Backend.dto.UserResponse;
 import com.example.DoctorPlaza.Backend.models.User;
-import java.util.List;
 
 /**
  *
  * @author HP
  */
-public interface UserService {
-    
-    public List<User>  getAllUsers();
-
+public interface AuthService {
+    UserResponse signUp(SignupRequest request); 
+    UserResponse logIn(LoginRequest request);
 }

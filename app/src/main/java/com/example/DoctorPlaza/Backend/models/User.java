@@ -4,91 +4,78 @@
  */
 package com.example.DoctorPlaza.Backend.models;
 
+import com.example.DoctorPlaza.Backend.Enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.UUID;
+
+
 
 /**
  *
  * @author HP
  */
 @Entity
-@Table(name="User")
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED) // Important for child table mapping
 public class User {
-    
+
     @Id
-    @Column(name="id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    private UUID id;
 
-    @Column(name="user_id")
-    private String userId;
-
-    @Column(name="name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name="email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    
-    @Column(name="role")
-    private String role;
-    
-    
 
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
 
-    protected User() {
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false, columnDefinition = "user_role")
+    private UserRole role;
 
-    }
+    @Column(name = "is_active")
+    private Boolean isActive = false;
 
-    protected User(String name, String email, String role) {
+    public User() {}
+
+    public User(String name, String email, String passwordHash, UserRole role) {
         this.name = name;
         this.email = email;
+        this.passwordHash = passwordHash;
         this.role = role;
-    }
-    
-    public Integer getId(){
-        return id;
-    }
-    
-    public void setId(Integer id){
-        this.id = id;
+        this.isActive = false;
     }
 
-    public String getUserId() {
-        return userId;
-    }
+    // Getters and Setters
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getPasswordHash() { return passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public UserRole getRole() { return role; }
+    public void setRole(UserRole role) { this.role = role; }
 
-    public String getRole() {
-        return role;
-    }
+    public Boolean getIsActive() { return isActive; }
+    public void setIsActive(Boolean active) { isActive = active; }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-    
     @Override
     public String toString() {
-        return "User [userId=" + userId + ", name=" + name + ", email=" + email + "]";
+        return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
     }
- 
 }
+

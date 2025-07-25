@@ -25,7 +25,9 @@ dependencies {
     
     implementation 'me.paulschwarz:spring-dotenv:3.0.0' 
     implementation 'org.postgresql:postgresql:42.7.1'
-
+    
+    implementation 'org.mindrot:jbcrypt:0.4'
+    
     implementation libs.guava
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

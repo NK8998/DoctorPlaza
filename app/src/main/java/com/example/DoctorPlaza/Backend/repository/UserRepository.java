@@ -19,6 +19,11 @@ import com.example.DoctorPlaza.Backend.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     
-    @Query(value ="select id, user_id, name, email, role from \"users\"", nativeQuery = true)
+    @Query(value ="select id, name, email, role from \"users\"", nativeQuery = true)
     public Optional<List<User>> getAllUsers();
+
+    public Optional<User> findByEmail(String email);
+    
+    //Insert a regular user
+    User save(User user);
 }
