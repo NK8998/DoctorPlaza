@@ -4,8 +4,8 @@
 package com.example.DoctorPlaza;
 
 import com.example.DoctorPlaza.Backend.SpringBootLauncher;
-import com.example.DoctorPlaza.Frontend.SceneManager;
-import com.example.DoctorPlaza.Frontend.SignInController;
+import com.example.DoctorPlaza.Frontend.controllers.SceneManager;
+import com.example.DoctorPlaza.Frontend.controllers.SignInController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1200" prefHeight="800" fx:controller="com.example.DoctorPlaza.Frontend.DischargeController">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #f8f8f8; -fx-padding: 30;" prefWidth="220">
+            <Label text="Receptionist Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
+            <Button text="📊 Dashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+            <Button text="➕ Register Patient" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+            <Button text="👥 Queue Management" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+            <Button text="🧾 Discharge Patient" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-border-color: #c20000; -fx-border-width: 2; -fx-border-radius: 10;" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <!-- Page Header -->
+            <VBox spacing="5">
+                <Label text="👥 Discharge / Complete Visit" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+                <Label text="Mark patient visits as completed and process discharge" style="-fx-text-fill: #666666;" />
+            </VBox>
+
+            <!-- Search Section -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 1;">
+                <Label text="Search Patients" style="-fx-text-fill: #d32f2f; -fx-font-size: 18px; -fx-font-weight: bold;" />
+                <TextField promptText="🔍 Search by patient name or doctor..." />
+            </VBox>
+
+            <!-- Today's Visits Header -->
+            <Label text="Today's Visits" style="-fx-text-fill: #d32f2f; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <!-- Patient Visit List -->
+            <VBox spacing="15">
+                <!-- Visit Card - Completed -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #e0e0e0;">
+                    <VBox spacing="5">
+                        <Label text="John Smith" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label text="✔ with Dr. Sarah Johnson at 09:30 AM" style="-fx-text-fill: #555;" />
+                        <Label text="Routine checkup" style="-fx-text-fill: #777;" />
+                    </VBox>
+                    <Pane />
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="COMPLETED" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" />
+                        <Button text="✔ Completed" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-text-fill: #666; -fx-background-radius: 10;" />
+                    </HBox>
+                </HBox>
+
+                <!-- Visit Card - In Progress -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #e0e0e0;">
+                    <VBox spacing="5">
+                        <Label text="Robert Brown" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label text="⏱ with Dr. Emily Rodriguez at 11:00 AM" style="-fx-text-fill: #555;" />
+                        <Label text="Consultation" style="-fx-text-fill: #777;" />
+                    </VBox>
+                    <Pane />
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="IN PROGRESS" style="-fx-background-color: #fdd835; -fx-text-fill: black; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" />
+                        <Button text="⏱ In Progress" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-text-fill: #666; -fx-background-radius: 10;" />
+                    </HBox>
+                </HBox>
+
+                <!-- Visit Card - Ready for Discharge -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #e0e0e0;">
+                    <VBox spacing="5">
+                        <Label text="Emma Wilson" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label text="👥 with Dr. James Wilson at 11:30 AM" style="-fx-text-fill: #555;" />
+                        <Label text="Physical therapy" style="-fx-text-fill: #777;" />
+                    </VBox>
+                    <Pane />
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="READY FOR DISCHARGE" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" />
+                        <Button text="👥 Discharge" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10;" />
+                    </HBox>
+                </HBox>
+
+                <!-- Visit Card - Another Ready for Discharge -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #e0e0e0;">
+                    <VBox spacing="5">
+                        <Label text="Lucas Davis" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label text="👥 with Dr. Sarah Johnson at 12:00 PM" style="-fx-text-fill: #555;" />
+                        <Label text="Follow-up examination" style="-fx-text-fill: #777;" />
+                    </VBox>
+                    <Pane />
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="READY FOR DISCHARGE" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" />
+                        <Button text="👥 Discharge" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10;" />
+                    </HBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

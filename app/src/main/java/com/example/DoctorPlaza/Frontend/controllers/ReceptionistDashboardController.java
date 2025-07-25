@@ -1,29 +1,23 @@
+<<<<<<< HEAD:app/src/main/java/com/example/DoctorPlaza/Frontend/controllers/ReceptionistDashboardController.java
+package com.example.DoctorPlaza.Frontend.controllers;
+=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package com.example.DoctorPlaza.Frontend;
+>>>>>>> 91da03a3e6a9ccf4d5ba29a8b1435f1ebf74f17f:app/src/main/java/com/example/DoctorPlaza/Frontend/ReceptionistDashboardController.java
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import com.example.DoctorPlaza.Frontend.SignUpController;
 
 /**
  * FXML Controller class
  *
- * @author Admin
+ * @author HP
  */
-public class SignInController implements Initializable {
-
-    @FXML
-    private TextField txtUsername;
-    @FXML
-    private Button btnSignUp;
+public class ReceptionistDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -32,10 +26,5 @@ public class SignInController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void btnSignUpAction(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignUP.fxml", new SignUpController());
-    }
     
 }
