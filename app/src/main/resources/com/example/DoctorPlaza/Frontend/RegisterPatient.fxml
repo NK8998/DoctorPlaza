@@ -1,127 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.geometry.Pos?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="91.33332824707031" minHeight="10.0" prefHeight="85.99998982747395" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="241.33334350585938" minHeight="10.0" prefHeight="226.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="127.66668701171875" minHeight="10.0" prefHeight="89.33333333333331" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <GridPane GridPane.rowIndex="2">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button mnemonicParsing="false" text="Back">
-               <GridPane.margin>
-                  <Insets left="150.0" />
-               </GridPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Exit" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </Button>
-         </children>
-      </GridPane>
-      <GridPane GridPane.rowIndex="1">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="154.66665649414062" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.3333435058594" minWidth="10.0" prefWidth="445.3333435058594" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Age:" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Full Name:">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Phone:" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Billing Address:" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Symptoms:" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <TextField promptText="Name" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField promptText="Age" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField promptText="Phone" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField promptText="Symptoms" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin>
-            </TextField>
-         </children>
-      </GridPane>
-      <GridPane>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <children>
-            <Label text="Register Patient" GridPane.columnIndex="4">
-               <GridPane.margin>
-                  <Insets left="280.0" right="50.0" />
-               </GridPane.margin>
-            </Label>
-         </children>
-      </GridPane>
-   </children>
-</GridPane>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1200" prefHeight="700" fx:controller="com.example.DoctorPlaza.Frontend.RegisterPatientController">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #f8f8f8; -fx-padding: 30;" prefWidth="220">
+            <Label text="Receptionist Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
+            <Button text="📊 Dashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+            <Button text="➕ Register Patient" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-border-color: #c20000; -fx-border-width: 2; -fx-border-radius: 10;" />
+            <Button text="👥 Queue Management" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+            <Button text="🧾 Discharge Patient" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" />
+        </VBox>
+    </left>
+
+    <!-- Main content -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Label text="📋 Medical Receptionist" style="-fx-font-size: 18px; -fx-text-fill: #c20000; -fx-font-weight: bold;" />
+                <Pane />
+                <Label text="Welcome, Receptionist" style="-fx-text-fill: #777;" />
+            </HBox>
+
+            <!-- Title -->
+            <VBox spacing="5">
+                <Label text="➕ Register New Patient" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+                <Label text="Enter patient information to add them to the queue" style="-fx-text-fill: #666666;" />
+            </VBox>
+
+            <!-- Patient Form -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1;">
+                <Label text="Patient Information" style="-fx-text-fill: #d32f2f; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+                <!-- Full Name and Age -->
+                <HBox spacing="20">
+                    <VBox spacing="5" prefWidth="300">
+                        <Label text="Full Name *" />
+                        <TextField promptText="Enter patient's full name" />
+                    </VBox>
+                    <VBox spacing="5" prefWidth="150">
+                        <Label text="Age *" />
+                        <TextField promptText="Enter age" />
+                    </VBox>
+                </HBox>
+
+                <!-- Phone Number -->
+                <VBox spacing="5">
+                    <Label text="Phone Number *" />
+                    <TextField promptText="Enter phone number" />
+                </VBox>
+
+                <!-- Billing Address -->
+                <VBox spacing="5">
+                    <Label text="Billing Address" />
+                    <TextArea promptText="Enter billing address" prefRowCount="2" />
+                </VBox>
+
+                <!-- Priority Level -->
+                <VBox spacing="5">
+                    <Label text="Priority Level" />
+                    <ComboBox promptText="Select priority level" />
+                </VBox>
+
+                <!-- Symptoms -->
+                <VBox spacing="5">
+                    <Label text="Symptoms / Reason for Visit" />
+                    <TextArea promptText="Describe symptoms or reason for visit" prefRowCount="3" />
+                </VBox>
+
+                <!-- Register Button -->
+                <HBox alignment="CENTER">
+                    <Button text="📝  Register Patient"
+                            style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 20 10 20; -fx-background-radius: 12;"
+                            maxWidth="200"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
