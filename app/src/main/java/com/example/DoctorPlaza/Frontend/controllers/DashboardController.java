@@ -2,28 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.example.DoctorPlaza.Frontend;
+package com.example.DoctorPlaza.Frontend.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import com.example.DoctorPlaza.Frontend.SignUpController;
 
 /**
  * FXML Controller class
  *
  * @author Admin
  */
-public class SignInController implements Initializable {
-
-    @FXML
-    private TextField txtUsername;
-    @FXML
-    private Button btnSignUp;
+public class DashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -34,8 +26,23 @@ public class SignInController implements Initializable {
     }    
 
     @FXML
-    private void btnSignUpAction(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignUP.fxml", new SignUpController());
+    private void handleDashboardClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleQueueClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleHistoryClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleAddRecordClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleEditRecordsClick(ActionEvent event) {
     }
     
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox style="-fx-background-color: #f5f5f5; -fx-padding: 0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.Patient_queueController">
+    
+    <!-- Left Navigation Sidebar -->
+    <VBox style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%); -fx-padding: 20px; -fx-spacing: 30px; -fx-min-width: 200px;">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0 0 20 0;" text="DoctorPlaza" />
+        
+        <!-- Navigation Items -->
+        <VBox style="-fx-spacing: 15px;">
+            <Button onAction="#handleDashboardClick" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-padding: 8px 10px; -fx-cursor: hand;" text="Dashboard" />
+            
+            <Button onAction="#handleQueueClick" style="-fx-font-size: 16px; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-padding: 8px 10px; -fx-cursor: hand;" text="Patient Queue" />
+            
+            <Button onAction="#handleHistoryClick" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-padding: 8px 10px; -fx-cursor: hand;" text="Patient History" />
+            
+            <Button onAction="#handleAddRecordClick" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-padding: 8px 10px; -fx-cursor: hand;" text="Add Record" />
+            
+            <Button onAction="#handleEditRecordsClick" style="-fx-font-size: 16px; -fx-text-fill: white; -fx-background-color: transparent; -fx-alignment: CENTER_LEFT; -fx-padding: 8px 10px; -fx-cursor: hand;" text="Edit Records" />
+        </VBox>
+    </VBox>
+    
+    <!-- Main Content Area -->
+    <VBox style="-fx-padding: 20px; -fx-spacing: 20px; -fx-background-color: #f5f5f5; -fx-max-width: infinity;">
+        <!-- Header -->
+        <VBox style="-fx-spacing: 5px;">
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Patient Queue" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Manage today's patient appointments and waiting times." />
+        </VBox>
+        
+        <!-- Search Bar -->
+        <TextField promptText="Search patients or reason..." style="-fx-background-color: white; -fx-background-radius: 5px; -fx-padding: 8px; -fx-font-size: 14px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);" />
+        
+        <!-- Patient Queue -->
+        <VBox style="-fx-spacing: 20px;">
+            <!-- Patient 1 -->
+            <VBox style="-fx-padding: 15px; -fx-background-color: white; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <HBox style="-fx-spacing: 10px; -fx-alignment: CENTER_LEFT;">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="David Wilson" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #3498db; -fx-font-weight: bold; -fx-padding: 3px 8px; -fx-background-color: #e8f4fc; -fx-background-radius: 10px;" text="normal" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #e67e22; -fx-font-weight: bold; -fx-padding: 3px 8px; -fx-background-color: #fdf2e9; -fx-background-radius: 10px;" text="waiting" />
+                </HBox>
+                
+                <VBox style="-fx-spacing: 5px; -fx-padding: 10px 0 0 0;">
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Reason: Annual Physical" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Appointment: 3:00 PM" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Arrival: 2:55 PM" />
+                </VBox>
+                
+                <HBox style="-fx-spacing: 15px; -fx-padding: 15px 0 0 0;">
+                    <Button style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 15px; -fx-background-radius: 5px; -fx-cursor: hand;" text="Call Patient" />
+                    <Button style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 15px; -fx-background-radius: 5px; -fx-cursor: hand;" text="Start Visit" />
+                </HBox>
+            </VBox>
+            
+            <!-- Patient 2 -->
+            <VBox style="-fx-padding: 15px; -fx-background-color: white; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                <HBox style="-fx-spacing: 10px; -fx-alignment: CENTER_LEFT;">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Eva Martinez" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-padding: 3px 8px; -fx-background-color: #fde8e8; -fx-background-radius: 10px;" text="urgent" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #e67e22; -fx-font-weight: bold; -fx-padding: 3px 8px; -fx-background-color: #fdf2e9; -fx-background-radius: 10px;" text="waiting" />
+                </HBox>
+                
+                <VBox style="-fx-spacing: 5px; -fx-padding: 10px 0 0 0;">
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Reason: Chest Pain" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Appointment: 3:30 PM" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" text="Arrival: 2:55 PM" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #e74c3c; -fx-font-weight: bold;" text="Wait: 35 mins" />
+                </VBox>
+                
+                <HBox style="-fx-spacing: 15px; -fx-padding: 15px 0 0 0;">
+                    <Button style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 15px; -fx-background-radius: 5px; -fx-cursor: hand;" text="Call Patient" />
+                    <Button style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8px 15px; -fx-background-radius: 5px; -fx-cursor: hand;" text="Start Visit" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </VBox>
+</HBox>

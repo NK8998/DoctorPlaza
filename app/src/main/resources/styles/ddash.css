@@ -1,0 +1,107 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+.header {
+    -fx-padding: 20px;
+    -fx-background-color: #2c3e50;
+    -fx-spacing: 20px;
+}
+
+.header-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.header-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ecf0f1;
+}
+
+.main-container {
+    -fx-padding: 20px;
+}
+
+.stat-box {
+    -fx-padding: 15px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-min-width: 150px;
+    -fx-alignment: CENTER;
+}
+
+.stat-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.section-box {
+    -fx-padding: 15px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-min-width: 250px;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 0 0 10px 0;
+}
+
+.queue-list, .visits-list {
+    -fx-padding: 5px 0;
+}
+
+.bullet-point {
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+}
+
+.patient-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.patient-detail {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.queue-status {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7f8c8d;
+}
+
+.queue-status.urgent {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+.visit-time {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-style: italic;
+}
+
+.system-message {
+    -fx-font-size: 13px;
+    -fx-text-fill: #e74c3c;
+}
+
+.system-message-detail {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+    -fx-padding: 0 0 0 15px;
+}

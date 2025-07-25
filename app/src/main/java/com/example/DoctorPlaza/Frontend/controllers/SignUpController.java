@@ -1,5 +1,7 @@
-package com.example.DoctorPlaza.Frontend;
+package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.controllers.SignInController;
+import com.example.DoctorPlaza.Frontend.controllers.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

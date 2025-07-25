@@ -1,4 +1,4 @@
-package com.example.DoctorPlaza.Frontend;
+package com.example.DoctorPlaza.Frontend.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
