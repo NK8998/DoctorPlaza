@@ -106,7 +106,7 @@ public class SignUpController implements Initializable {
     @FXML
     private void btnSignInAction(ActionEvent event) {
         // Switch to sign in screen
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignIn.fxml", new SignInController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignIn.fxml", new SignInController());
     }
     
     // Helper method for email validation
