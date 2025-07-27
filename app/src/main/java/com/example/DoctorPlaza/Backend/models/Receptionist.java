@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "receptionists")
-public class Receptionist{
+public class Receptionist extends User{
     @Id
     private UUID id;
     

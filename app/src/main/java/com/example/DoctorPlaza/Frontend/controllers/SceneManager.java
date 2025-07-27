@@ -41,7 +41,7 @@ public class SceneManager {
 
             if (primaryStage.getScene() != null) {
                 primaryStage.getScene().setRoot(newRoot);
-                ScaleTransition st = new ScaleTransition(Duration.millis(200), newRoot);
+                ScaleTransition st = new ScaleTransition(Duration.millis(400), newRoot);
                 st.setFromX(0.98);
                 st.setFromY(0.98);
                 st.setToX(1);

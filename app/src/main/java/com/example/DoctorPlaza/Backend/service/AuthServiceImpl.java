@@ -63,36 +63,40 @@ public class AuthServiceImpl implements AuthService {
                 throw new RuntimeException("Email already in use");
             }
 
-            User user = new User();
-            user.setName(request.getName());
-            user.setEmail(request.getEmail());
-            user.setPasswordHash(passwordService.encode(request.getPassword()));
-            user.setRole(role);
-            user.setIsActive(false);
 
-            User savedUser = userRepository.save(user);
-
-            if (savedUser.getRole() == UserRole.DOCTOR) {
+            if (role == UserRole.DOCTOR ) {
                 
                 if (request.getSpecialization() == null || request.getSpecialization().trim().isEmpty()) {
                     throw new RuntimeException("Please provide specialization for doctor");
                 }
 
                 Doctor doctor = new Doctor();
-                doctor.setId(savedUser.getId());
+                doctor.setName(request.getName());
+                doctor.setEmail(request.getEmail());
+                doctor.setPasswordHash(passwordService.encode(request.getPassword()));
+                doctor.setRole(role);
+                doctor.setIsActive(false);
                 doctor.setSpecialization(request.getSpecialization());
                 doctor.setBio(request.getBio());
 
                 doctorRepository.save(doctor);
+                
+                return mapToResponse(doctor);
 
-            } else if (savedUser.getRole() == UserRole.RECEPTIONIST) {
+            } else if (role == UserRole.RECEPTIONIST) {
                 Receptionist receptionist = new Receptionist();
-                receptionist.setId(savedUser.getId());
+                receptionist.setName(request.getName());
+                receptionist.setEmail(request.getEmail());
+                receptionist.setPasswordHash(passwordService.encode(request.getPassword()));
+                receptionist.setRole(role);
+                receptionist.setIsActive(false);
 
                 receptionistRepository.save(receptionist);
-            }
+                return mapToResponse(receptionist);
 
-            return mapToResponse(savedUser);
+            }
+            
+            return null;
             
         }catch(IllegalArgumentException e){
             throw new RuntimeException("Invalid role provided");

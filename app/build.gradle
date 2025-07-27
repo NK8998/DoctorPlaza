@@ -44,6 +44,10 @@ application {
     mainClass = 'com.example.DoctorPlaza.App'
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '-parameters'
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
