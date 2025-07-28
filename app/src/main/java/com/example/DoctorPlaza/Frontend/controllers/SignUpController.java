@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package com.example.DoctorPlaza.Frontend.controllers;
-import com.example.DoctorPlaza.Frontend.controllers.SceneManager;
+import com.example.DoctorPlaza.Frontend.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,7 +46,6 @@ public class SignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignUP.fxml", new SignInController());
     }    
 
     private void btnSignUpAction(ActionEvent event) {

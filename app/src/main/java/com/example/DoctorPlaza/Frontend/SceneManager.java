@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Frontend.controllers;
+package com.example.DoctorPlaza.Frontend;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,9 +35,11 @@ public class SceneManager {
             }
             
             FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            if (controller != null) loader.setController(controller);
+            //if (controller != null) loader.setController(controller);
             
             Parent newRoot = loader.load();
+            
+            System.out.println("Starting app");
 
             if (primaryStage.getScene() != null) {
                 primaryStage.getScene().setRoot(newRoot);
