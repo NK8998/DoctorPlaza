@@ -28,25 +28,26 @@
             </padding>
 
             <Label style="-fx-font-size: 14px;" text="Full Name" />
-            <TextField fx:id="fullNameField" promptText="Full Name" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <TextField fx:id="txtUsername" promptText="Full Name" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
             <Label style="-fx-font-size: 14px;" text="Email" />
-            <TextField fx:id="emailField" promptText="Enter Email" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <TextField fx:id="txtEmail" promptText="Enter Email" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
             <Label style="-fx-font-size: 14px;" text="Password" />
-            <PasswordField fx:id="passwordField" promptText="Password" style="-fx-background-radius: 10;" />
+            <PasswordField fx:id="txtPassword" promptText="Password" style="-fx-background-radius: 10;" />
 
             <Label style="-fx-font-size: 14px;" text="Confirm Password" />
-            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" style="-fx-background-radius: 10;" />
+            <PasswordField fx:id="txtConfirm" promptText="Confirm Password" style="-fx-background-radius: 10;" />
 
             <Label style="-fx-font-size: 14px;" text="Role" />
-            <ComboBox fx:id="roleComboBox" promptText="Admin or Doctor" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <ComboBox fx:id="roleChoiceBox" promptText="Admin or Doctor" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
             <Label style="-fx-font-size: 14px;" text="Specialization" />
-            <ComboBox fx:id="specializationComboBox" promptText="Select specialization" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <ComboBox fx:id="speciallizationChoiceBox" promptText="Select specialization" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
 
             <Button alignment="CENTER" prefHeight="45" prefWidth="250" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%); -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 30;" text="Sign Up" />
+         <Label fx:id="errorLabel" />
         </VBox>
     </center>
 </BorderPane>

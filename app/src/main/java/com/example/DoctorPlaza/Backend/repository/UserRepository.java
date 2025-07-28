@@ -11,14 +11,31 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.DoctorPlaza.Backend.models.User;
+import jakarta.transaction.Transactional;
+import java.util.UUID;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author HP
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, UUID> {
+
+    Optional<User> findByEmail(String email);
     
-    @Query(value ="select id, user_id, name, email, role from \"users\"", nativeQuery = true)
-    public Optional<List<User>> getAllUsers();
+    List<User> findByIsActiveFalse();
+    
+    List<User> findByRoleNot(String role);
+    
+    List<User> findByRole(String role);
+    
+    List<User> findByIsActive(boolean isActive);
+    
+    @Modifying
+    @Transactional
+    @Query("UPDATE User u SET u.isActive = :isActive WHERE u.id = :id")
+    void updateIsActiveById(@Param("id") UUID id, @Param("isActive") boolean isActive);
+
 }
