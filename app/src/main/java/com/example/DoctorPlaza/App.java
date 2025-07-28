@@ -32,7 +32,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException{
         SceneManager.setStage(stage);
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/SignIn.fxml", new SignInController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignIn.fxml", new SignInController());
     }
     
     @Override

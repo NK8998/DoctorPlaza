@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author HP
  */
-public class ReceptionistDashboardController implements Initializable {
+public class Add_recordController implements Initializable {
 
     /**
      * Initializes the controller class.

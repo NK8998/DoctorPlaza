@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1000" prefHeight="600"
+            fx:controller="com.example.DoctorPlaza.Frontend.AdminDashboardController">
+
+    <!-- Sidebar Navigation -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;" prefWidth="200">
+            <Label text="Admin Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
+            <Button text="📊 Dashboard" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+            <Button text="⏳ Pending Approvals" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+            <Button text="👥 User Management" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+            <Button text="🔄 Assign Receptionist" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <!-- Header -->
+            <VBox spacing="5">
+                <Label text="Admin Dashboard" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+                <Label text="Monitor and manage your healthcare system" style="-fx-text-fill: #666666;" />
+            </VBox>
+
+            <!-- Top Stats -->
+            <GridPane hgap="20" vgap="20">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints percentHeight="50"/>
+                    <RowConstraints percentHeight="50"/>
+                </rowConstraints>
+
+                <!-- Total Users -->
+                <StackPane style="-fx-border-color: #c20000; -fx-border-width: 2 0 0 0; -fx-background-radius: 10; -fx-background-color: white; -fx-padding: 20;"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0">
+                    <VBox spacing="5">
+                        <Label text="Total Users" style="-fx-text-fill: #666666;" />
+                        <Label text="2,451" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label text="+12.5% from last week" style="-fx-text-fill: green;" />
+                    </VBox>
+                </StackPane>
+
+                <!-- Pending Approvals -->
+                <StackPane style="-fx-border-color: #c20000; -fx-border-width: 2 0 0 0; -fx-background-radius: 10; -fx-background-color: white; -fx-padding: 20;"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <VBox spacing="5">
+                        <Label text="Pending Approvals" style="-fx-text-fill: #666666;" />
+                        <Label text="23" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label text="+5 from last week" style="-fx-text-fill: green;" />
+                    </VBox>
+                </StackPane>
+
+                <!-- Active Sessions -->
+                <StackPane style="-fx-border-color: #c20000; -fx-border-width: 2 0 0 0; -fx-background-radius: 10; -fx-background-color: white; -fx-padding: 20;"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0">
+                    <VBox spacing="5">
+                        <Label text="Active Sessions" style="-fx-text-fill: #666666;" />
+                        <Label text="1,832" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label text="+8.2% from last week" style="-fx-text-fill: green;" />
+                    </VBox>
+                </StackPane>
+
+                <!-- Approved Today -->
+                <StackPane style="-fx-border-color: #c20000; -fx-border-width: 2 0 0 0; -fx-background-radius: 10; -fx-background-color: white; -fx-padding: 20;"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <VBox spacing="5">
+                        <Label text="Approved Today" style="-fx-text-fill: #666666;" />
+                        <Label text="18" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label text="+3 from last week" style="-fx-text-fill: green;" />
+                    </VBox>
+                </StackPane>
+            </GridPane>
+
+            <!-- Recent Approval Requests -->
+            <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-border-width: 1;">
+                <Label text="Recent Approval Requests" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #c20000;" />
+                <Label text="Latest user registration requests requiring approval" style="-fx-text-fill: #666666;" />
+
+                <!-- Request Entry 1 -->
+                <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #f9f9f9; -fx-background-radius: 10;">
+                    <VBox spacing="3">
+                        <Label text="Dr. Sarah Johnson" style="-fx-font-weight: bold;" />
+                        <Label text="sarah.j@hospital.com" />
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Doctor" style="-fx-background-color: #e0e0e0; -fx-padding: 3 8 3 8; -fx-background-radius: 8;" />
+                    <Label text="pending • 2 hours ago" style="-fx-text-fill: #c20000;" />
+                </HBox>
+
+                <!-- Request Entry 2 -->
+                <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #f9f9f9; -fx-background-radius: 10;">
+                    <VBox spacing="3">
+                        <Label text="Mike Chen" style="-fx-font-weight: bold;" />
+                        <Label text="mike.c@clinic.com" />
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Receptionist" style="-fx-background-color: #e0e0e0; -fx-padding: 3 8 3 8; -fx-background-radius: 8;" />
+                    <Label text="approved • 4 hours ago" style="-fx-text-fill: green;" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

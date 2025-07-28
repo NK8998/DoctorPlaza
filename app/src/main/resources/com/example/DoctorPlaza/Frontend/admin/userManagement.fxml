@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx/8"
+            fx:controller="com.example.DoctorPlaza.Frontend.UserManagementController"
+            prefWidth="1100" prefHeight="700">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;" prefWidth="220">
+            <Label text="Admin Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
+            <Label text="Healthcare Management System" style="-fx-text-fill: #999;" />
+
+            <Button text="📊 Dashboard"
+                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+
+            <Button text="⏳ Pending Approvals"
+                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+
+            <Button text="👥 User Management"
+                    style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-size: 14px;" />
+
+            <Button text="🔄 Assign Receptionist"
+                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <!-- Page Header -->
+            <VBox spacing="5">
+                <Label text="User Management" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+                <Label text="Manage all users and their assignments" style="-fx-text-fill: #666;" />
+            </VBox>
+
+            <!-- Stat Boxes -->
+            <HBox spacing="20">
+                <VBox style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-padding: 15;" spacing="5">
+                    <Label text="Total Users" />
+                    <Label text="5" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-padding: 15;" spacing="5">
+                    <Label text="Doctors" />
+                    <Label text="3" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-padding: 15;" spacing="5">
+                    <Label text="Receptionists" />
+                    <Label text="2" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-padding: 15;" spacing="5">
+                    <Label text="Active" />
+                    <Label text="4" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: green;" />
+                </VBox>
+            </HBox>
+
+            <!-- Filters -->
+            <HBox spacing="15">
+                <TextField promptText="Search users..." style="-fx-background-radius: 10; -fx-padding: 10;" />
+                <ComboBox promptText="All Roles" prefWidth="150" />
+                <ComboBox promptText="All Status" prefWidth="150" />
+            </HBox>
+
+            <!-- User Entry: Dr. Sarah Johnson -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 10; -fx-padding: 15;">
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <StackPane prefWidth="50" prefHeight="50" style="-fx-background-color: #f24153; -fx-background-radius: 25;">
+                        <Label text="DJ" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label text="Dr. Sarah Johnson" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <HBox spacing="5">
+                            <Label text="active" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 2 6; -fx-background-radius: 8;" />
+                            <Label text="Doctor" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 2 6; -fx-background-radius: 8;" />
+                        </HBox>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="📧 sarah.j@hospital.com" />
+                    <Label text="📅 Last login: 2024-01-15" />
+                </HBox>
+
+                <GridPane hgap="40" vgap="5">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+                    <Label text="Specialization: Cardiology" GridPane.columnIndex="0"/>
+                    <Label text="Assigned Receptionist: Emily Davis" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label text="Active Patients: 45" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="View Details" />
+                    <Button text="Manage Assignments" />
+                </HBox>
+            </VBox>
+
+            <!-- User Entry: Mike Chen -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 10; -fx-padding: 15;">
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <StackPane prefWidth="50" prefHeight="50" style="-fx-background-color: #cddc39; -fx-background-radius: 25;">
+                        <Label text="MC" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label text="Mike Chen" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <HBox spacing="5">
+                            <Label text="active" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 2 6; -fx-background-radius: 8;" />
+                            <Label text="Receptionist" style="-fx-background-color: lightgray; -fx-text-fill: black; -fx-padding: 2 6; -fx-background-radius: 8;" />
+                        </HBox>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="📧 mike.c@clinic.com" />
+                    <Label text="📅 Last login: 2024-01-15" />
+                </HBox>
+
+                <GridPane hgap="40" vgap="5">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+                    <Label text="Department: Front Desk" GridPane.columnIndex="0"/>
+                    <Label text="Assigned Doctors: Dr. Sarah Johnson, Dr. Ahmed Hassan" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label text="Appointments Today: 12" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="View Details" />
+                    <Button text="Manage Assignments" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
+
