@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author HP
  */
-public class DashboardController implements Initializable {
+public class PendingApprovalsController implements Initializable {
 
     /**
      * Initializes the controller class.

@@ -1,43 +1,53 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
 package com.example.DoctorPlaza.Frontend.controllers;
+import com.example.DoctorPlaza.Frontend.SceneManager;
 
-import com.example.DoctorPlaza.Frontend.controllers.SignInController;
-import com.example.DoctorPlaza.Frontend.controllers.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
+/**
+ * FXML Controller class
+ *
+ * @author HP
+ */
 public class SignUpController implements Initializable {
 
-    @FXML private Button btnSignup;
-    @FXML private TextField txtUsername;
-    @FXML private TextField txtEmail;
-    @FXML private PasswordField txtPassword;
-    @FXML private PasswordField txtConfirm;
-    @FXML private ChoiceBox<String> roleChoiceBox;
-    @FXML private Label errorLabel;
-    @FXML private Button btnSignIn;
+    @FXML
+    private BorderPane signupPane;
+    @FXML
+    private TextField txtUsername;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private PasswordField txtPassword;
+    @FXML
+    private ComboBox<?> roleChoiceBox;
+    @FXML
+    private ComboBox<?> speciallizationChoiceBox;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private PasswordField txtConfirm;
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Initialize role selection with three options
-        roleChoiceBox.getItems().addAll("Admin", "Receptionist", "Doctor");
-        
-        // Set default selection to empty (forces user to make a choice)
-        roleChoiceBox.setValue(null);
-        
-        // Style the error label
-        errorLabel.setTextFill(Color.RED);
     }    
 
-    @FXML
     private void btnSignUpAction(ActionEvent event) {
         // Reset error label
         errorLabel.setText("");
@@ -47,7 +57,7 @@ public class SignUpController implements Initializable {
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirm.getText();
-        String role = roleChoiceBox.getValue();
+        String role = roleChoiceBox.getValue().toString();
 
         // Validate username
         if (username.isEmpty()) {
@@ -103,7 +113,6 @@ public class SignUpController implements Initializable {
         // registerUser(username, email, password, role);
     }
 
-    @FXML
     private void btnSignInAction(ActionEvent event) {
         // Switch to sign in screen
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignIn.fxml", new SignInController());
@@ -115,4 +124,5 @@ public class SignUpController implements Initializable {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         return email.matches(emailRegex);
     }
+    
 }
