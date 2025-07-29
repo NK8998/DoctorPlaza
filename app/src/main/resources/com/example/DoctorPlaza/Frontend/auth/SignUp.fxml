@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="signupPane" prefHeight="600" prefWidth="900" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.SignUpController">
+<BorderPane fx:id="signupPane" prefHeight="600" prefWidth="900" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.SignUpController">
 
     <!-- Red Side Panel (Right) -->
     <right>
-        <VBox alignment="CENTER" prefHeight="606.0" prefWidth="454.0" spacing="20" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);">
+        <VBox alignment="CENTER" prefHeight="605.0" prefWidth="429.0" spacing="20" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);">
             <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Sign Up now!" />
             <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Already have an account?" />
-            <Button prefHeight="40" prefWidth="100" style="-fx-background-color: white; -fx-text-fill: #F24164; -fx-font-size: 14px; -fx-background-radius: 30;" text="Sign In" />
+            <Button fx:id="btnSignIn" onAction="#btnSignInAction" prefHeight="40" prefWidth="100" style="-fx-background-color: white; -fx-text-fill: #F24164; -fx-font-size: 14px; -fx-background-radius: 30;" text="Sign In" />
         </VBox>
     </right>
 
     <!-- Form Panel (Center) -->
     <center>
-        <VBox alignment="TOP_LEFT" prefHeight="606.0" prefWidth="298.0" spacing="15">
+        <VBox alignment="TOP_LEFT" spacing="15">
             <padding>
                 <Insets bottom="40" left="40" right="40" top="40" />
             </padding>
@@ -40,14 +40,14 @@
             <PasswordField fx:id="txtConfirm" promptText="Confirm Password" style="-fx-background-radius: 10;" />
 
             <Label style="-fx-font-size: 14px;" text="Role" />
-            <ComboBox fx:id="roleChoiceBox" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <ComboBox fx:id="roleChoiceBox" promptText="Select Role" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
             <Label style="-fx-font-size: 14px;" text="Specialization" />
-            <ComboBox fx:id="speciallizationChoiceBox" promptText="Select specialization" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
+            <ComboBox fx:id="speciallizationChoiceBox" disable="true" promptText="Select specialization" style="-fx-background-color: #F4F7FB; -fx-background-radius: 25;" />
 
+            <Button alignment="CENTER" prefHeight="45" prefWidth="250" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);                            -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 30;" text="Sign Up" />
 
-            <Button alignment="CENTER" prefHeight="45" prefWidth="250" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%); -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 30;" text="Sign Up" />
-         <Label fx:id="errorLabel" />
+            <Label fx:id="errorLabel" textFill="red" />
         </VBox>
     </center>
 </BorderPane>
