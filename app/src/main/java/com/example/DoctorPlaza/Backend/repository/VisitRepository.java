@@ -4,17 +4,21 @@
  */
 package com.example.DoctorPlaza.Backend.repository;
 
-import com.example.DoctorPlaza.Backend.models.User;
-import java.util.List;
+import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author HP
  */
-public interface AdminRepository extends JpaRepository<User, UUID> {
+public interface VisitRepository extends JpaRepository<Visit, UUID> {
     
- 
+    @Modifying
+    @Query("UPDATE Visit v SET v.status = COMPLETED WHERE v.id = :id")
+    void markVisitAsComplete(@Param("id") UUID id);
+
 }
