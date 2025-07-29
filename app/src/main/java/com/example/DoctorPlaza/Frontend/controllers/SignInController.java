@@ -5,7 +5,6 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.SceneManager;
-import com.example.DoctorPlaza.Frontend.controllers.SignUpController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -37,7 +36,7 @@ public class SignInController implements Initializable {
     @FXML
     private void btnSignUpAction(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignUP.fxml", new SignUpController());
-
+        System.out.println("Switching scenes");
     }
     
 }

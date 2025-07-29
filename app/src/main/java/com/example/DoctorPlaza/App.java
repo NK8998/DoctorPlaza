@@ -6,6 +6,7 @@ package com.example.DoctorPlaza;
 import com.example.DoctorPlaza.Backend.SpringBootLauncher;
 import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.controllers.SignInController;
+import com.example.DoctorPlaza.Frontend.controllers.SignUpController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -31,7 +32,6 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws IOException{
-        System.out.println("sdjvbjkfbvjsvbskbvjksbv");
         SceneManager.setStage(stage);
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignIn.fxml", new SignInController());
     }
