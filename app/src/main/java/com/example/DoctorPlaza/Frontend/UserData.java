@@ -14,9 +14,9 @@ import java.util.UUID;
 
 public class UserData {
     
-    private static final UUID userId;
-    private static final String name;
-    private static final UserRole role;
+    //private static final UUID userId;
+    //private static final String name;
+    //private static final UserRole role;
     
     
     
