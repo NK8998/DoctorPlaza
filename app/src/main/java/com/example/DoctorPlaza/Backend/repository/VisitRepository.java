@@ -4,11 +4,11 @@
  */
 package com.example.DoctorPlaza.Backend.repository;
 
-import com.example.DoctorPlaza.Backend.models.Doctor;
-import com.example.DoctorPlaza.Backend.models.Receptionist;
+import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -16,9 +16,12 @@ import org.springframework.data.repository.query.Param;
  *
  * @author HP
  */
-public interface ReceptionistRepository extends JpaRepository<Receptionist, UUID> {
+public interface VisitRepository extends JpaRepository<Visit, UUID> {
     
-    List<Receptionist> findAll();
-    // Insert a receptionist 
-    Receptionist save(Receptionist receptionist);
+    List<Visit> findByDoctorId(UUID id);
+    
+    @Modifying
+    @Query("UPDATE Visit v SET v.status = COMPLETED WHERE v.id = :id")
+    void markVisitAsComplete(@Param("id") UUID id);
+
 }

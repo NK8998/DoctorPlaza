@@ -4,17 +4,15 @@
  */
 package com.example.DoctorPlaza.Backend.repository;
 
-import com.example.DoctorPlaza.Backend.models.User;
-import java.util.List;
+import com.example.DoctorPlaza.Backend.models.Patient;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author HP
  */
-public interface AdminRepository extends JpaRepository<User, UUID> {
+public interface PatientRepository extends JpaRepository<Patient, UUID> {
     
- 
+    //retrieve patient 
 }
