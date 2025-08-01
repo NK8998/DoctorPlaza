@@ -12,10 +12,22 @@
     <left>
         <VBox spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;" prefWidth="200">
             <Label text="Receptionist Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
-            <Button text="📊 Dashboard" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
-            <Button text="➕ Register Patient" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
-            <Button text="👥 Queue Management" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
-            <Button text="🧾 Discharge Patient" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+            <Button fx:id="btnDashboard" text="📊 Dashboard" 
+        onAction="#handleDashboard" 
+        style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+
+<Button fx:id="btnRegister" text="➕ Register Patient" 
+        onAction="#handleRegister" 
+        style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+
+<Button fx:id="btnQueue" text="👥 Queue Management" 
+        onAction="#handleQueue" 
+        style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+
+<Button fx:id="btnDischarge" text="🧾 Discharge Patient" 
+        onAction="#handleDischarge" 
+        style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" />
+
         </VBox>
     </left>
 
