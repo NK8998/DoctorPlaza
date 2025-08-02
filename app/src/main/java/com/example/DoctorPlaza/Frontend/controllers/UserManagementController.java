@@ -6,8 +6,10 @@ package com.example.DoctorPlaza.Frontend.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 
 /**
@@ -18,9 +20,13 @@ import javafx.scene.layout.Region;
 public class UserManagementController implements Initializable {
 
     @FXML
-    private Region spacer;
+    private Button btnAdminDashboard;
     @FXML
-    private Region spacer2;
+    private Button btnPendingApprovals;
+    @FXML
+    private Button btnUserManagement;
+    @FXML
+    private Button btnAssignReceptionist;
 
     /**
      * Initializes the controller class.
@@ -29,5 +35,21 @@ public class UserManagementController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleAdminDashboard(ActionEvent event) {
+    }
+
+    @FXML
+    private void handlePendingApprovals(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleUserManagement(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleAssignReceptionist(ActionEvent event) {
+    }
     
 }

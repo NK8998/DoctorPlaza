@@ -4,10 +4,13 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 
 /**
@@ -18,9 +21,13 @@ import javafx.scene.layout.Region;
 public class AdminDashboardController implements Initializable {
 
     @FXML
-    private Region spacer1;
+    private Button btnAdminDashboard;
     @FXML
-    private Region spacer2;
+    private Button btnPendingApprovals;
+    @FXML
+    private Button btnUserManagement;
+    @FXML
+    private Button btnAssignReceptionist;
 
     /**
      * Initializes the controller class.
@@ -29,5 +36,25 @@ public class AdminDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleAdminDashboard(ActionEvent event) {
+        System.out.println("alradey in Admin Dashboard page");
+    }
+
+    @FXML
+    private void handlePendingApprovals(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
+    }
+
+    @FXML
+    private void handleUserManagement(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
+    }
+
+    @FXML
+    private void handleAssignReceptionist(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
+    }
     
 }
