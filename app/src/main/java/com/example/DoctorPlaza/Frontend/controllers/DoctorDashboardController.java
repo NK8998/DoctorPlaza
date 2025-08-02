@@ -44,8 +44,8 @@ public class DoctorDashboardController implements Initializable {
         // TODO
         UserSession session = UserSession.getInstance();
         System.out.println(session);
-        lblName.setText("Dr. " + session.getName().split("Dr")[1].toString() );
-        lblWelcome.setText("Welcome Dr. " + session.getName().split("Dr")[1].toString() + ". Here is your overview for today.");
+        lblName.setText("Dr. " + session.getName() );
+        lblWelcome.setText("Welcome Dr. " + session.getName() + ". Here is your overview for today.");
     }    
 
     @FXML
