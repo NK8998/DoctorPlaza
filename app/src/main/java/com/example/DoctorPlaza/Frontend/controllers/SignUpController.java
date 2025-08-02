@@ -1,6 +1,9 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.SceneManager;
+import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
+import com.example.DoctorPlaza.Frontend.dto.UserResponse;
+import com.example.DoctorPlaza.Frontend.service.HttpService;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -35,10 +38,13 @@ public class SignUpController implements Initializable {
     private Label errorLabel;
     @FXML
     private Button btnSignIn;
+    @FXML
+    private Button signUpBtn;
 
     private final List<String> specializations = Arrays.asList(
             "Cardiologist", "Dermatologist", "Pediatrician", "Surgeon", "Neurologist"
     );
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,4 +71,37 @@ public class SignUpController implements Initializable {
     private void btnSignInAction(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/auth/SignIn.fxml", new SignInController());
     }
+
+    @FXML
+    private void handleSignUp(ActionEvent event) {
+        SignupRequest request = new SignupRequest();
+        request.setName(txtUsername.getText());
+        request.setEmail(txtEmail.getText());
+        request.setPassword(txtPassword.getText());
+        request.setRole(roleChoiceBox.getValue());
+
+        if ("DOCTOR".equalsIgnoreCase(request.getRole())) {
+            //request.setBio(bioField.getText());
+            request.setSpecialization(speciallizationChoiceBox.getValue());
+        }
+
+        try {
+            String url = "http://localhost:8080/auth/signup";
+            String method = "POST";
+            UserResponse response = HttpService.sendRequest(
+                url,
+                request,
+                method,
+                UserResponse.class // or whatever your backend returns
+            );
+
+            // Do something with response
+            System.out.println("Success: " + response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Show error to user
+        }
+    }
+
 }

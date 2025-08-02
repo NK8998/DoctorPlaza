@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Backend.repository;
 
+import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.List;
 import java.util.UUID;
@@ -17,8 +18,10 @@ import org.springframework.data.repository.query.Param;
  * @author HP
  */
 public interface VisitRepository extends JpaRepository<Visit, UUID> {
-    
-    List<Visit> findByDoctorId(UUID id);
+        
+    @Query("SELECT new com.example.DoctorPlaza.Backend.dto.PatientVisitResponse(v.id, p.name, p.age, v.symptoms, v.status) " +
+       "FROM Visit v JOIN v.patient p WHERE v.doctor.id = :doctorId AND v.status = 'WAITING'")
+    List<PatientVisitResponse> findDoctorQueue(@Param("doctorId") UUID doctorId);
     
     @Modifying
     @Query("UPDATE Visit v SET v.status = COMPLETED WHERE v.id = :id")

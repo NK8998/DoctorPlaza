@@ -5,6 +5,7 @@
 package com.example.DoctorPlaza.Backend.controller;
 
 import com.example.DoctorPlaza.Backend.dto.MedicalHistoryRequest;
+import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Doctor;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import com.example.DoctorPlaza.Backend.service.DoctorService;
@@ -38,8 +39,8 @@ public class DoctorController {
     @GetMapping("/queue/{id}")
     public ResponseEntity<?> getDoctorQueue(@PathVariable UUID id) {
         try {
-            List<Visit> queue = doctorService.getDoctorQueue(id);
-            return new ResponseEntity<List<Visit>>(queue, HttpStatus.OK);
+            List<PatientVisitResponse> queue = doctorService.getDoctorQueue(id);
+            return new ResponseEntity<List<PatientVisitResponse>>(queue, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

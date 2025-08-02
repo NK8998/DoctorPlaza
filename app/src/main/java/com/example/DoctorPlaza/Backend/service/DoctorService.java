@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
+import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.List;
 import java.util.UUID;
@@ -14,5 +15,5 @@ import java.util.UUID;
  */
 public interface DoctorService {
     
-    List<Visit> getDoctorQueue(UUID id);
+    List<PatientVisitResponse> getDoctorQueue(UUID id);
 }

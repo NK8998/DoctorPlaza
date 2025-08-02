@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
+import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import com.example.DoctorPlaza.Backend.repository.VisitRepository;
 import java.util.List;
@@ -22,9 +23,9 @@ public class DoctorServiceImpl implements DoctorService {
     private VisitRepository visitRepository;
 
     @Override
-    public List<Visit> getDoctorQueue(UUID id) {
+    public List<PatientVisitResponse> getDoctorQueue(UUID id) {
         //join tables visit and patient on this doctor's id////
-        return visitRepository.findByDoctorId(id);
+        return visitRepository.findDoctorQueue(id);
     }
     
 }
