@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml"
-            prefWidth="1100" prefHeight="750" fx:controller="com.example.DoctorPlaza.Frontend.doctor.Add_recordController">
+<BorderPane prefHeight="750" prefWidth="1100" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.Add_recordController">
 
     <!-- Sidebar -->
     <left>
-        <VBox spacing="15" style="-fx-background-color: #f8f8f8; -fx-padding: 30;" prefWidth="200">
-            <Label text="🩺 MedPanel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;" />
-            <Button text="📊 Dashboard" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" />
-            <Button text="📍 Patient Queue" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" />
-            <Button text="📋 Patient History" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" />
-            <Button text="➕ Add Record" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-background-radius: 6;" />
-            <Button text="✏️ Edit Records" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" />
+        <VBox prefWidth="200" spacing="15" style="-fx-background-color: #f8f8f8; -fx-padding: 30;">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;" text="🩺 MedPanel" />
+            <Button fx:id="btnDashboard" onAction="#handleDashboard" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" text="📊 Dashboard" />
+            <Button fx:id="btnPatientQueue" onAction="#handlePatientQueue" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" text="📍 Patient Queue" />
+            <Button fx:id="btnPatientHistory" onAction="#handlePatientHistory" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" text="📋 Patient History" />
+            <Button fx:id="btnAddRecord" onAction="#handleAddRecord" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-background-radius: 6;" text="➕ Add Record" />
+            <Button fx:id="btnEditRecord" onAction="#handleEditRecord" style="-fx-background-color: transparent; -fx-text-fill: #d32f2f;" text="✏️ Edit Records" />
         </VBox>
     </left>
 
@@ -25,24 +30,24 @@
         <VBox spacing="25" style="-fx-padding: 30;">
             <!-- Header -->
             <HBox alignment="CENTER_LEFT">
-                <Label text="Add Medical Record" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Label text="Dr. Sarah Johnson" style="-fx-text-fill: #666;" />
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="Add Medical Record" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Label style="-fx-text-fill: #666;" text="Dr. Sarah Johnson" />
             </HBox>
-            <Label text="Create a new medical record for a patient visit." style="-fx-text-fill: #666;" />
+            <Label style="-fx-text-fill: #666;" text="Create a new medical record for a patient visit." />
 
             <!-- Form Panel -->
             <VBox spacing="20" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #ddd;">
 
-                <Label text="📝 New Medical Record" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;" />
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;" text="📝 New Medical Record" />
 
                 <!-- First Row: Patient + Visit Date -->
                 <HBox spacing="20">
-                    <VBox spacing="5" prefWidth="400">
+                    <VBox prefWidth="400" spacing="5">
                         <Label text="Patient *" />
                         <ComboBox promptText="Select a patient" />
                     </VBox>
-                    <VBox spacing="5" prefWidth="400">
+                    <VBox prefWidth="400" spacing="5">
                         <Label text="Visit Date *" />
                         <DatePicker />
                     </VBox>
@@ -50,11 +55,11 @@
 
                 <!-- Second Row: Diagnosis + Symptoms -->
                 <HBox spacing="20">
-                    <VBox spacing="5" prefWidth="400">
+                    <VBox prefWidth="400" spacing="5">
                         <Label text="Diagnosis *" />
                         <ComboBox promptText="Select diagnosis" />
                     </VBox>
-                    <VBox spacing="5" prefWidth="400">
+                    <VBox prefWidth="400" spacing="5">
                         <Label text="Symptoms" />
                         <TextField promptText="e.g., Fever, cough, headache" />
                     </VBox>
@@ -64,34 +69,29 @@
                 <VBox spacing="5">
                     <Label text="Medications Prescribed" />
                     <HBox spacing="10">
-                        <TextField promptText="Add medication (e.g., Ibuprofen 400mg)" HBox.hgrow="ALWAYS"/>
-                        <Button text="➕" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-background-radius: 10;" />
+                        <TextField promptText="Add medication (e.g., Ibuprofen 400mg)" HBox.hgrow="ALWAYS" />
+                        <Button style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-background-radius: 10;" text="➕" />
                     </HBox>
                 </VBox>
 
                 <!-- Clinical Notes -->
                 <VBox spacing="5">
                     <Label text="Clinical Notes *" />
-                    <TextArea promptText="Detailed notes about the patient’s condition, examination findings, treatment plan..." prefRowCount="4"/>
+                    <TextArea prefRowCount="4" promptText="Detailed notes about the patient’s condition, examination findings, treatment plan..." />
                 </VBox>
 
                 <!-- Follow-up Instructions -->
                 <VBox spacing="5">
                     <Label text="Follow-up Instructions" />
-                    <TextArea promptText="Next appointment recommendations, when to return, what to monitor..." prefRowCount="3"/>
+                    <TextArea prefRowCount="3" promptText="Next appointment recommendations, when to return, what to monitor..." />
                 </VBox>
 
                 <!-- Save and Clear Buttons -->
-                <HBox spacing="10" alignment="CENTER_RIGHT">
-                    <Button text="Save Medical Record"
-                            style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;"
-                            prefWidth="200"/>
-                    <Button text="Clear Form"
-                            style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-border-color: #ccc; -fx-background-radius: 8;"
-                            prefWidth="100"/>
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button prefWidth="200" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;" text="Save Medical Record" />
+                    <Button prefWidth="100" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-border-color: #ccc; -fx-background-radius: 8;" text="Clear Form" />
                 </HBox>
             </VBox>
         </VBox>
     </center>
 </BorderPane>
-
