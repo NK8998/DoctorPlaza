@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -37,18 +38,22 @@ public class Patient_historyController implements Initializable {
 
     @FXML
     private void handleDashboard(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
     }
 
     @FXML
     private void handlePatientQueue(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/patient_queue.fxml", new Patient_queueController());
     }
 
     @FXML
     private void handleAddRecord(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/add_record.fxml", new Add_recordController());
     }
 
     @FXML
     private void handleEditRecords(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
     }
     
 }

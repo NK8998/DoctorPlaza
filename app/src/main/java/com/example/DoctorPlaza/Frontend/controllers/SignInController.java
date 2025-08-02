@@ -5,7 +5,12 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Backend.dto.LoginRequest;
+import com.example.DoctorPlaza.Frontend.Enums.UserRole;
+import static com.example.DoctorPlaza.Frontend.Enums.UserRole.ADMIN;
+import static com.example.DoctorPlaza.Frontend.Enums.UserRole.DOCTOR;
+import static com.example.DoctorPlaza.Frontend.Enums.UserRole.RECEPTIONIST;
 import com.example.DoctorPlaza.Frontend.SceneManager;
+import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
@@ -63,13 +68,29 @@ public class SignInController implements Initializable {
                 UserResponse.class // or whatever your backend returns
             );
 
-            // Do something with response
-            System.out.println("Success: " + response);
+            UserSession session = UserSession.getInstance();
+            session.setUserId(response.getId());
+            session.setName(response.getName());
+            session.setEmail(response.getEmail());
+            session.setRole(response.getRole());
+            
+            navigate(response.getRole());
 
         } catch (Exception e) {
             e.printStackTrace();
             // Show error to user
         }
+    }
+    
+    private void navigate(UserRole role){
+        
+        switch(role){
+            case DOCTOR -> SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
+            case RECEPTIONIST -> SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/receptionistDashboard.fxml", new ReceptionistDashboardController());
+            case ADMIN -> SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
+            default -> throw new IllegalStateException("Unexpected role: " + role);
+        }
+        
     }
     
 }

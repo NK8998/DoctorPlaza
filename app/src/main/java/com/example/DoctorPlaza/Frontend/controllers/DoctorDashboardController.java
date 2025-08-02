@@ -5,19 +5,21 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.SceneManager;
+import com.example.DoctorPlaza.Frontend.UserSession;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author Admin
  */
-public class DashboardController implements Initializable {
+public class DoctorDashboardController implements Initializable {
 
     @FXML
     private Button btnDashboard;
@@ -29,6 +31,10 @@ public class DashboardController implements Initializable {
     private Button btnAddRecord;
     @FXML
     private Button btnEditRecords;
+    @FXML
+    private Label lblName;
+    @FXML
+    private Label lblWelcome;
 
     /**
      * Initializes the controller class.
@@ -36,6 +42,10 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        UserSession session = UserSession.getInstance();
+        System.out.println(session);
+        lblName.setText("Dr. " + session.getName().split("Dr")[1].toString() );
+        lblWelcome.setText("Welcome Dr. " + session.getName().split("Dr")[1].toString() + ". Here is your overview for today.");
     }    
 
     @FXML

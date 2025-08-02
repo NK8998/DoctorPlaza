@@ -38,8 +38,9 @@ public class Edit_recordController implements Initializable {
         // TODO
     }    
 
+    @FXML
        private void handleDashboard(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DashboardController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
     }
 
     @FXML

@@ -5,22 +5,23 @@
 package com.example.DoctorPlaza.Frontend.dto;
 
 import com.example.DoctorPlaza.Frontend.Enums.UserRole;
+import java.util.UUID;
 
 /**
  *
  * @author HP
  */
 public class UserResponse {
-    private String id;
+    private UUID id;
     private String name;
     private String email;
     private UserRole role;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

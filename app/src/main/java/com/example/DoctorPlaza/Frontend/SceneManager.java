@@ -39,7 +39,7 @@ public class SceneManager {
             
             Parent newRoot = loader.load();
             
-            System.out.println("Starting app");
+            System.out.println("Switching scenes");
 
             if (primaryStage.getScene() != null) {
                 primaryStage.getScene().setRoot(newRoot);
