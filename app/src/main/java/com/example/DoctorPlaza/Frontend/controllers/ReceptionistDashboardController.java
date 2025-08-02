@@ -1,5 +1,6 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,38 +18,26 @@ public class ReceptionistDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Initialization if needed
+        // Initialization logic if needed
     }
 
     @FXML
     private void handleDashboard(ActionEvent event) {
-        // Already on dashboard, optionally refresh
-        System.out.println("Dashboard clicked");
+        System.out.println("Already on Receptionist Dashboard page");
     }
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml");
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new RegisterPatientController());
     }
 
     @FXML
     private void handleQueue(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml");
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new QueueManagementController());
     }
 
     @FXML
     private void handleDischarge(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionist/dischargePatient.fxml");
-    }
-
-    private void switchScene(ActionEvent event, String fxmlPath) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+      SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new DischargeController());  
     }
 }

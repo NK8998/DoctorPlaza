@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.DoctorPlaza.Frontend.controllers.AssignReceptionistController"
-            prefWidth="1100" prefHeight="700">
+<BorderPane prefHeight="700" prefWidth="1100" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.AssignReceptionistController">
 
     <!-- Sidebar -->
     <left>
-        <VBox spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;" prefWidth="220">
-            <Label text="Admin Portal" style="-fx-text-fill: #c20000; -fx-font-weight: bold;" />
-            <Label text="Healthcare Management System" style="-fx-text-fill: #999;" />
+        <VBox prefWidth="220" spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;">
+            <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold;" text="Admin Portal" />
+            <Label style="-fx-text-fill: #999;" text="Healthcare Management System" />
 
-            <Button text="📊 Dashboard"
-                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+            <Button fx:id="btnAdminDashboard" onAction="#handleAdminDashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="📊 Dashboard" />
 
-            <Button text="⏳ Pending Approvals"
-                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+            <Button fx:id="btnPendingApprovals" onAction="#handlePendingApprovals" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="⏳ Pending Approvals" />
 
-            <Button text="👥 User Management"
-                    style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" />
+            <Button fx:id="btnUserManagement" onAction="#handleUserManagement" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="👥 User Management" />
 
-            <Button text="➕ Assign Receptionist"
-                    style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10;" />
+            <Button fx:id="btnAssignReceptionist" onAction="#handleAssignReceptionist" style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10;" text="➕ Assign Receptionist" />
         </VBox>
     </left>
 
@@ -35,27 +33,27 @@
         <VBox spacing="25" style="-fx-padding: 30;">
             <!-- Header -->
             <VBox spacing="5">
-                <Label text="Assign Receptionist" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
-                <Label text="Manage receptionist assignments to doctors" style="-fx-text-fill: #666;" />
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="Assign Receptionist" />
+                <Label style="-fx-text-fill: #666;" text="Manage receptionist assignments to doctors" />
             </VBox>
 
             <!-- Quick Assignment Form -->
             <VBox spacing="15" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 20;">
-                <Label text="➕ Quick Assignment" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #c20000;" />
-                <Label text="Assign a receptionist to a doctor quickly" style="-fx-text-fill: #777;" />
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #c20000;" text="➕ Quick Assignment" />
+                <Label style="-fx-text-fill: #777;" text="Assign a receptionist to a doctor quickly" />
 
                 <HBox spacing="20">
                     <VBox spacing="5">
                         <Label text="Select Doctor" />
-                        <ComboBox promptText="Choose a doctor" prefWidth="300"/>
+                        <ComboBox prefWidth="300" promptText="Choose a doctor" />
                     </VBox>
                     <VBox spacing="5">
                         <Label text="Select Receptionist" />
-                        <ComboBox promptText="Choose a receptionist" prefWidth="300"/>
+                        <ComboBox prefWidth="300" promptText="Choose a receptionist" />
                     </VBox>
                 </HBox>
 
-                <Button text="🔗 Assign Receptionist" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 10; -fx-font-size: 14px; -fx-background-radius: 10;"/>
+                <Button style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 10; -fx-font-size: 14px; -fx-background-radius: 10;" text="🔗 Assign Receptionist" />
             </VBox>
 
             <!-- Search Bar -->
@@ -63,26 +61,25 @@
 
             <!-- Doctor Assignment Section -->
             <VBox spacing="10">
-                <Label text="Doctor Assignments" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
-                <Label text="Current receptionist assignments for doctors" style="-fx-text-fill: #777;" />
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Doctor Assignments" />
+                <Label style="-fx-text-fill: #777;" text="Current receptionist assignments for doctors" />
 
                 <!-- Assignment Card -->
                 <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 10; -fx-padding: 15;">
-                    <HBox spacing="15" alignment="CENTER_LEFT">
-                        <StackPane prefWidth="50" prefHeight="50" style="-fx-background-color: #f24153; -fx-background-radius: 25;">
-                            <Label text="DJ" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <StackPane prefHeight="50" prefWidth="50" style="-fx-background-color: #f24153; -fx-background-radius: 25;">
+                            <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="DJ" />
                         </StackPane>
                         <VBox spacing="2">
-                            <Label text="Dr. Sarah Johnson" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
-                            <Label text="Cardiology" style="-fx-text-fill: #777;" />
+                            <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Dr. Sarah Johnson" />
+                            <Label style="-fx-text-fill: #777;" text="Cardiology" />
                         </VBox>
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Label text="high workload" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" />
-                        <Label text="45 patients" style="-fx-text-fill: #666;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-background-radius: 10;" text="high workload" />
+                        <Label style="-fx-text-fill: #666;" text="45 patients" />
                     </HBox>
                 </VBox>
             </VBox>
         </VBox>
     </center>
 </BorderPane>
-
