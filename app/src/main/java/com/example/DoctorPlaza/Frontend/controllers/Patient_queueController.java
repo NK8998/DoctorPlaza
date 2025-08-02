@@ -38,8 +38,9 @@ public class Patient_queueController implements Initializable {
         // TODO
     }    
 
+    @FXML
      private void handleDashboard(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DashboardController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
     }
 
     @FXML
@@ -58,9 +59,12 @@ public class Patient_queueController implements Initializable {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/add_record.fxml", new Add_recordController());
     }
 
-    @FXML
     private void handleEditRecord(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
+    }
+
+    @FXML
+    private void handleEditRecords(ActionEvent event) {
     }
     
     

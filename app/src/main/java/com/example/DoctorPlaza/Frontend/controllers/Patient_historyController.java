@@ -33,12 +33,19 @@ public class Patient_historyController implements Initializable {
      */
    @FXML
 
+<<<<<<< HEAD
        private void handleDashboard(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DashboardController());
+=======
+    @FXML
+    private void handleDashboard(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
+>>>>>>> 9eb2ac67ac296486addade784f32e4bb6f017c85
     }
 
     @FXML
     private void handlePatientQueue(ActionEvent event) {
+<<<<<<< HEAD
         
        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/patient_queue.fxml", new Patient_queueController());
     }
@@ -46,15 +53,22 @@ public class Patient_historyController implements Initializable {
     @FXML
     private void handlePatientHistory(ActionEvent event) {
         System.out.println("Already on Patient History page. ");
+=======
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/patient_queue.fxml", new Patient_queueController());
+>>>>>>> 9eb2ac67ac296486addade784f32e4bb6f017c85
     }
 
     @FXML
     private void handleAddRecord(ActionEvent event) {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 9eb2ac67ac296486addade784f32e4bb6f017c85
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/add_record.fxml", new Add_recordController());
     }
 
     @FXML
+<<<<<<< HEAD
     private void handleEditRecord(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
     }
@@ -62,5 +76,9 @@ public class Patient_historyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+=======
+    private void handleEditRecords(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
+>>>>>>> 9eb2ac67ac296486addade784f32e4bb6f017c85
     }
 }

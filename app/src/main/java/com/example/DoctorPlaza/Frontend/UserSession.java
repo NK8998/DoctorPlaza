@@ -78,5 +78,10 @@ public class UserSession {
         this.role = null;
         this.specialization = null;
     }
+    
+    @Override
+    public String toString(){
+        return this.name + this.email + this.specialization;
+    }
 }
 
