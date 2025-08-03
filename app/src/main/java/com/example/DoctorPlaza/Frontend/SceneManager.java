@@ -43,13 +43,13 @@ public class SceneManager {
 
             if (primaryStage.getScene() != null) {
                 primaryStage.getScene().setRoot(newRoot);
-                ScaleTransition st = new ScaleTransition(Duration.millis(400), newRoot);
-                st.setFromX(0.98);
-                st.setFromY(0.98);
-                st.setToX(1);
-                st.setToY(1);
-                st.setInterpolator(Interpolator.SPLINE(0.5, 0.0, 0.3, 1.0)); 
-                st.play();
+//                ScaleTransition st = new ScaleTransition(Duration.millis(400), newRoot);
+//                st.setFromX(0.98);
+//                st.setFromY(0.98);
+//                st.setToX(1);
+//                st.setToY(1);
+//                st.setInterpolator(Interpolator.SPLINE(0.5, 0.0, 0.3, 1.0)); 
+//                st.play();
             } else {
                 primaryStage.setScene(new Scene(newRoot));
             }

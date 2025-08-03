@@ -4,7 +4,10 @@
  */
 package com.example.DoctorPlaza.Frontend.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -23,17 +26,20 @@ public class HttpService {
             .build();
 
     private static final ObjectMapper mapper = new ObjectMapper();
+    
+    static {
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    }
+
 
     public static <T, R> R sendRequest(
-            String url,
-            T requestBody,
-            String method,
-            Class<R> responseType
+        String url,
+        T requestBody,
+        String method,
+        TypeReference<R> responseType
     ) throws IOException, InterruptedException {
 
-        HttpRequest request;
-
-        // Default to empty body for GET
         HttpRequest.BodyPublisher body = requestBody != null
                 ? HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(requestBody))
                 : HttpRequest.BodyPublishers.noBody();
@@ -42,14 +48,14 @@ public class HttpService {
                 .uri(URI.create(url))
                 .header("Content-Type", "application/json");
 
-        switch (method.toUpperCase()) {
-            case "POST" -> request = builder.POST(body).build();
-            case "PUT" -> request = builder.PUT(body).build();
-            case "PATCH" -> request = builder.method("PATCH", body).build();
-            case "DELETE" -> request = builder.method("DELETE", body).build();
-            case "GET" -> request = builder.GET().build();
+        HttpRequest request = switch (method.toUpperCase()) {
+            case "POST" -> builder.POST(body).build();
+            case "PUT" -> builder.PUT(body).build();
+            case "PATCH" -> builder.method("PATCH", body).build();
+            case "DELETE" -> builder.method("DELETE", body).build();
+            case "GET" -> builder.GET().build();
             default -> throw new IllegalArgumentException("Unsupported method: " + method);
-        }
+        };
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
@@ -59,4 +65,5 @@ public class HttpService {
             throw new IOException("HTTP error: " + response.statusCode() + " - " + response.body());
         }
     }
+
 }

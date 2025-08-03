@@ -19,12 +19,14 @@ import org.springframework.data.repository.query.Param;
  */
 public interface VisitRepository extends JpaRepository<Visit, UUID> {
         
-    @Query("SELECT new com.example.DoctorPlaza.Backend.dto.PatientVisitResponse(v.id, p.name, p.age, v.symptoms, v.status) " +
-       "FROM Visit v JOIN v.patient p WHERE v.doctor.id = :doctorId AND v.status = 'WAITING'")
+    @Query("SELECT new com.example.DoctorPlaza.Backend.dto.PatientVisitResponse(" +
+           "v.id, p.name, p.age, v.symptoms, v.status, v.queuedAt, v.completedAt) " +
+           "FROM Visit v JOIN v.patient p WHERE v.doctor.id = :doctorId")
     List<PatientVisitResponse> findDoctorQueue(@Param("doctorId") UUID doctorId);
+
     
     @Modifying
-    @Query("UPDATE Visit v SET v.status = COMPLETED WHERE v.id = :id")
+    @Query("UPDATE Visit v SET v.status = COMPLETED, v.completedAt = CURRENT_TIMESTAMP WHERE v.id = :id")
     void markVisitAsComplete(@Param("id") UUID id);
 
 }

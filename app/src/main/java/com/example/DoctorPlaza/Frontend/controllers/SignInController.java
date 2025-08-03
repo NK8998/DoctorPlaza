@@ -14,6 +14,7 @@ import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
+import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -65,7 +66,7 @@ public class SignInController implements Initializable {
                 url,
                 request,
                 method,
-                UserResponse.class // or whatever your backend returns
+                new TypeReference<UserResponse>(){} // or whatever your backend returns
             );
 
             UserSession session = UserSession.getInstance();

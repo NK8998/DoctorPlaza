@@ -61,6 +61,7 @@ public class ReceptionistServiceImpl implements ReceptionistService {
     }
 
     @Override
+    @Transactional
     public Visit addPatientToDoctorQueue(VisitRequest request) {
         UUID patientId = request.getPatientId();
         UUID doctorId = request.getDoctorId();

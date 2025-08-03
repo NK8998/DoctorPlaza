@@ -6,8 +6,14 @@ package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.UserSession;
+import com.example.DoctorPlaza.Frontend.dto.PatientVisitResponse;
+import com.example.DoctorPlaza.Frontend.service.HttpService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,7 +52,33 @@ public class DoctorDashboardController implements Initializable {
         System.out.println(session);
         lblName.setText("Dr. " + session.getName() );
         lblWelcome.setText("Welcome Dr. " + session.getName() + ". Here is your overview for today.");
-    }    
+        Platform.runLater(() -> {
+            getDoctorQueue();
+        });
+    }
+    
+    private void getDoctorQueue(){
+        try{
+            UserSession session = UserSession.getInstance();
+            String url = "http://localhost:8080/doctor/queue/" + String.valueOf(session.getUserId());
+            List<PatientVisitResponse> response = HttpService.sendRequest(
+                    url, 
+                    null, 
+                    "GET", 
+                    new TypeReference<List<PatientVisitResponse>>(){}
+            );
+            
+            System.out.println("Got " + response.size() + " visits");
+            response.forEach(System.out::println);
+            
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();   
+        }
+  
+    }
+    
 
     @FXML
     private void handleDashboard(ActionEvent event) {

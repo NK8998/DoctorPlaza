@@ -81,7 +81,10 @@ public class UserSession {
     
     @Override
     public String toString(){
-        return this.name + this.email + this.specialization;
+        return "UserId: "+ this.userId + "\n"+
+               "Name: "  + this.name  + "\n" +
+               "Email: " + this.email + "\n" +
+               "Role: "  + this.role  + "\n" ;
     }
 }
 

@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Backend.dto;
+package com.example.DoctorPlaza.Frontend.dto;
 
 import com.example.DoctorPlaza.Backend.Enums.VisitStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -21,16 +22,6 @@ public class PatientVisitResponse {
     private Instant queuedAt;
     private Instant completedAt;
 
-
-    public PatientVisitResponse(UUID visitId, String patientName, int patientAge, String symptoms, VisitStatus status, Instant queuedAt, Instant completedAt) {
-        this.visitId = visitId;
-        this.patientName = patientName;
-        this.patientAge = patientAge;
-        this.symptoms = symptoms;
-        this.status = status;
-        this.queuedAt = queuedAt;
-        this.completedAt = completedAt;
-    }
 
     public UUID getVisitId() {
         return visitId;
@@ -87,17 +78,14 @@ public class PatientVisitResponse {
     public void setCompletedAt(Instant completedAt) {
         this.completedAt = completedAt;
     }
-
     
     @Override
     public String toString(){
-        return "Name: " + this.patientName +
-                "Age: " + this.patientAge +
-                "Symptoms: " + this.patientAge +
-                "status: " + this.status +
-                "queued at: " + this.queuedAt +
-                "completed at: " + this.completedAt;
+        return  "Name: " + this.patientName + "\n" +
+                "Age: " + this.patientAge + "\n" +
+                "Symptoms: " + this.patientAge + "\n" +
+                "status: " + this.status + "\n" +
+                "queued at: " + this.queuedAt + "\n" +
+                "completed at: " + this.completedAt + "\n";
      }
-    
-    
 }

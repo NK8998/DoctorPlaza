@@ -40,7 +40,7 @@ public class AuthServiceImpl implements AuthService {
 
     private UserResponse mapToResponse(User user) {
         UserResponse response = new UserResponse();
-        response.setId(user.getId().toString());
+        response.setId(user.getId());
         response.setName(user.getName());
         response.setEmail(user.getEmail());
         response.setRole(user.getRole());

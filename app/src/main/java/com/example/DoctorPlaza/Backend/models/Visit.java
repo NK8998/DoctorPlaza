@@ -44,6 +44,10 @@ public class Visit {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private VisitStatus status;
+    
+    @Column(name = "completed_at")
+    private Instant  completedAt;
+
 
     public Visit() {
         this.id = UUID.randomUUID();
@@ -107,6 +111,14 @@ public class Visit {
 
     public void setStatus(VisitStatus status) {
         this.status = status;
+    }
+    
+    public Instant getCompletedAt() {
+        return completedAt;
+    }
+
+    public void setCompletedAt(Instant completedAt) {
+        this.completedAt = completedAt;
     }
 }
 
