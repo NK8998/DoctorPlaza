@@ -78,7 +78,7 @@ public class AdminController {
     }
     
     @PatchMapping("/assign-receptionist")
-    public ResponseEntity<?> rejectUser(@RequestBody AssignReceptionistRequest request) {
+    public ResponseEntity<?> assignReceptionist(@RequestBody AssignReceptionistRequest request) {
         try {
             adminService.assignReceptionistToDoctor(request);
             return new ResponseEntity("receptionist assigned", HttpStatus.OK);

@@ -6,6 +6,7 @@ import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
+import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URL;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -29,10 +31,7 @@ public class SignUpController implements Initializable {
     private TextField txtUsername;
     @FXML
     private TextField txtEmail;
-    @FXML
     private PasswordField txtPassword;
-    @FXML
-    private PasswordField txtConfirm;
     @FXML
     private ComboBox<String> roleChoiceBox;  // ✅ changed to <String>
     @FXML
@@ -47,6 +46,22 @@ public class SignUpController implements Initializable {
     private final List<String> specializations = Arrays.asList(
             "Cardiologist", "Dermatologist", "Pediatrician", "Surgeon", "Neurologist"
     );
+    @FXML
+    private TextField txtPasswordVisible;
+    @FXML
+    private PasswordField txtPasswordHidden;
+    @FXML
+    private Button btnPasswordVisible;
+    @FXML
+    private Button btnPasswordHidden;
+    @FXML
+    private PasswordField txtConfirmHidden;
+    @FXML
+    private TextField txtConfirmVisible;
+    @FXML
+    private Button btnConfirmVisible;
+    @FXML
+    private Button btnConfirmHidden;
 
 
     @Override
@@ -68,6 +83,22 @@ public class SignUpController implements Initializable {
                 speciallizationChoiceBox.getItems().clear();
             }
         });
+        
+        txtPasswordVisible.setManaged(false);
+        txtPasswordVisible.setVisible(false);
+        btnPasswordVisible.setVisible(false);
+        btnPasswordVisible.setManaged(false);
+        
+        txtConfirmVisible.setManaged(false);
+        txtConfirmVisible.setVisible(false);
+        btnConfirmVisible.setVisible(false);
+        btnConfirmVisible.setManaged(false);
+        
+
+        // Keep both fields in sync
+        txtPasswordVisible.textProperty().bindBidirectional(txtPasswordHidden.textProperty());
+        txtConfirmVisible.textProperty().bindBidirectional(txtConfirmHidden.textProperty());
+
     }
 
     @FXML
@@ -87,17 +118,17 @@ public class SignUpController implements Initializable {
             //request.setBio(bioField.getText());
             request.setSpecialization(speciallizationChoiceBox.getValue());
         }
-
-        try {
-            String url = "http://localhost:8080/auth/signup";
-            String method = "POST";
-            UserResponse response = HttpService.sendRequest(
+        String url = "http://localhost:8080/auth/signup";
+        String method = "POST";
+        HttpTask<Void, UserResponse> task =  new HttpTask(
                 url,
                 request,
                 method,
-                new TypeReference<UserResponse>(){} // or whatever your backend returns
-            );
-
+                new TypeReference<UserResponse>(){} 
+        );
+        
+        task.setOnSucceeded(e -> {
+            UserResponse response = task.getValue();
             // Do something with response
             System.out.println("Success: " + response);
             
@@ -107,13 +138,16 @@ public class SignUpController implements Initializable {
             session.setEmail(response.getEmail());
             session.setRole(response.getRole());
             
-            navigate(response.getRole());
             
+            navigate(response.getRole());
+        });
+        
+        task.setOnFailed(e -> {
+            //display toast message
+            task.getException().printStackTrace();
+        });
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Show error to user
-        }
+        new Thread(task).start();
     }
     
     private void navigate(UserRole role){
@@ -125,6 +159,38 @@ public class SignUpController implements Initializable {
             default -> throw new IllegalStateException("Unexpected role: " + role);
         }
         
+    }
+
+    @FXML
+    private void handleTogglePasswordVisibility(ActionEvent event) {
+        boolean isVisible = txtPasswordVisible.isVisible();
+
+        txtPasswordVisible.setVisible(!isVisible);
+        txtPasswordVisible.setManaged(!isVisible);
+        btnPasswordVisible.setVisible(!isVisible);
+        btnPasswordVisible.setManaged(!isVisible);
+        
+        txtPasswordHidden.setVisible(isVisible);
+        txtPasswordHidden.setManaged(isVisible);
+        btnPasswordHidden.setVisible(isVisible);
+        btnPasswordHidden.setManaged(isVisible);
+
+    }
+
+    @FXML
+    private void handleToggleConfirmVisibility(ActionEvent event) {
+        
+        boolean isVisible = txtConfirmVisible.isVisible();
+
+        txtConfirmVisible.setVisible(!isVisible);
+        txtConfirmVisible.setManaged(!isVisible);
+        btnConfirmVisible.setVisible(!isVisible);
+        btnConfirmVisible.setManaged(!isVisible);
+        
+        txtConfirmHidden.setVisible(isVisible);
+        txtConfirmHidden.setManaged(isVisible);
+        btnConfirmHidden.setVisible(isVisible);
+        btnConfirmHidden.setManaged(isVisible);
     }
 
 }

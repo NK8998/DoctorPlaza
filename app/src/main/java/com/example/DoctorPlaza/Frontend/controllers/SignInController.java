@@ -14,13 +14,16 @@ import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
+import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -37,7 +40,13 @@ public class SignInController implements Initializable {
     @FXML
     private TextField txtEmail;
     @FXML
-    private TextField txtPassword;
+    private PasswordField txtPasswordHidden;
+    @FXML
+    private TextField txtPasswordVisible;
+    @FXML
+    private Button btnPasswordVisible;
+    @FXML
+    private Button btnPasswordHidden;
 
     /**
      * Initializes the controller class.
@@ -45,6 +54,13 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txtPasswordVisible.setManaged(false);
+        txtPasswordVisible.setVisible(false);
+        btnPasswordVisible.setVisible(false);
+        btnPasswordVisible.setManaged(false);
+
+        // Keep both fields in sync
+        txtPasswordVisible.textProperty().bindBidirectional(txtPasswordHidden.textProperty());
     }    
 
     @FXML
@@ -55,32 +71,43 @@ public class SignInController implements Initializable {
 
     @FXML
     private void handleSignIn(ActionEvent event) {
+        btnSignIn.setDisable(true);
+        
         LoginRequest request = new LoginRequest();
         request.setEmail(txtEmail.getText());
-        request.setPassword(txtPassword.getText());
-
-        try {
-            String url = "http://localhost:8080/auth/login";
-            String method = "POST";
-            UserResponse response = HttpService.sendRequest(
+        request.setPassword(txtPasswordHidden.getText());
+        
+        String url = "http://localhost:8080/auth/login";
+        String method = "POST";
+        
+        HttpTask<Void, UserResponse> task = new HttpTask(
                 url,
                 request,
                 method,
                 new TypeReference<UserResponse>(){} // or whatever your backend returns
-            );
-
+        );
+        
+        
+        task.setOnSucceeded(e -> {
+            UserResponse response = task.getValue();
+            
             UserSession session = UserSession.getInstance();
             session.setUserId(response.getId());
             session.setName(response.getName());
             session.setEmail(response.getEmail());
             session.setRole(response.getRole());
             
-            navigate(response.getRole());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Show error to user
-        }
+            
+            navigate(response.getRole());
+        });
+        
+        task.setOnFailed(e -> {
+            task.getException().printStackTrace();
+        });
+        
+        new Thread(task).start();
+
     }
     
     private void navigate(UserRole role){
@@ -92,6 +119,22 @@ public class SignInController implements Initializable {
             default -> throw new IllegalStateException("Unexpected role: " + role);
         }
         
+    }
+
+    @FXML
+    private void handleTogglePasswordVisibility(ActionEvent event) {
+        boolean isVisible = txtPasswordVisible.isVisible();
+
+        txtPasswordVisible.setVisible(!isVisible);
+        txtPasswordVisible.setManaged(!isVisible);
+        btnPasswordVisible.setVisible(!isVisible);
+        btnPasswordVisible.setManaged(!isVisible);
+        
+        txtPasswordHidden.setVisible(isVisible);
+        txtPasswordHidden.setManaged(isVisible);
+        btnPasswordHidden.setVisible(isVisible);
+        btnPasswordHidden.setManaged(isVisible);
+
     }
     
 }

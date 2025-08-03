@@ -1,3 +1,42 @@
+
+
+.form-label{
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill:  #363636;
+}
+
+.form-input{
+    -fx-background-radius: 50px;
+    -fx-background-color:  #ededed;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+    -fx-padding: 10px;
+}
+
+.toggle-passowrd-visibility {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-pref-width: 40px;
+    -fx-pref-height: 30px;
+    -fx-padding: 0;
+}
+
+.form-input-container {
+    -fx-padding: 7px 10px 7px 10px;
+}
+
+.form-input-pass {
+    -fx-background-color:  #ededed;
+}
+
+.sign-in-btn {
+    -fx-background-color:  linear-gradient(to right ,rgba(227, 64, 69, 1) 0%, rgba(242, 63, 87, 1) 50%, rgba(250, 65, 117, 1) 100%);
+    -fx-background-radius: 50px;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+
 .check-box > .box {
     -fx-background-color: transparent;
     -fx-border-color: #F24153;
@@ -16,47 +55,6 @@
 
 .check-box:selected > .box > .mark {
     -fx-background-color: white;
-}
-
-.form-label{
-    -fx-font-size: 11px;
-    -fx-font-weight: bold;
-    -fx-text-fill:  #363636;
-}
-
-.form-input{
-    -fx-background-radius: 50px;
-    -fx-background-color:  #ededed;
-    -fx-padding: 10px;
-}
-
-/* Remove group borders and spacing */
-.formsfx-group {
-    -fx-border-width: 0;
-    -fx-padding: 0;
-    -fx-background-insets: 0;
-    -fx-border-insets: 0;
-}
-
-
-.simple-control .label {
-    -fx-min-width: 180px;
-    -fx-pref-width: 180px;
-    -fx-max-width: 180px;
-    -fx-padding: 0px 10px 0px 0px;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px 10px 0px 0px; /* Top, Right, Bottom, Left */
-}
-
-
-.simple-control .text-field,
-.simple-control .password-field,
-.simple-control .text-area {
-    -fx-hgrow: always;
-    -fx-pref-width: Infinity;
-    -fx-max-width: Infinity;
-    -fx-min-width: 0;
-    -fx-padding: 5px;
 }
 
 /* ===================== */
@@ -79,3 +77,5 @@
     -fx-font-size: 16px;
     -fx-text-fill: #666666;
 }
+/* Welcome & Header Labels */
+

@@ -40,7 +40,7 @@ public class Patient {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
-
+    
     // --- Constructors ---
     public Patient() {
         this.id = UUID.randomUUID();

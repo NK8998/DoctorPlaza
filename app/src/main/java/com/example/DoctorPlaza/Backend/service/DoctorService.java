@@ -4,8 +4,11 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
+import com.example.DoctorPlaza.Backend.dto.EditRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.MedicalRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.MedicalRecordResponse;
+import com.example.DoctorPlaza.Backend.dto.PatientHistoryResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
-import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,4 +19,9 @@ import java.util.UUID;
 public interface DoctorService {
     
     List<PatientVisitResponse> getDoctorQueue(UUID id);
+    List<PatientVisitResponse> getSeenPatients(UUID id);
+    List<PatientHistoryResponse> getPatientHistory(UUID id);
+    void addRecord(MedicalRecordRequest request);
+    void editRecord(EditRecordRequest request);
+    List<MedicalRecordResponse> getAllMedicalRecords(UUID id);
 }

@@ -8,6 +8,7 @@ import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
+import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.IOException;
 import java.net.URL;
@@ -52,32 +53,35 @@ public class DoctorDashboardController implements Initializable {
         System.out.println(session);
         lblName.setText("Dr. " + session.getName() );
         lblWelcome.setText("Welcome Dr. " + session.getName() + ". Here is your overview for today.");
-        Platform.runLater(() -> {
-            getDoctorQueue();
-        });
+        
+        getDoctorQueue();
     }
     
-    private void getDoctorQueue(){
-        try{
-            UserSession session = UserSession.getInstance();
-            String url = "http://localhost:8080/doctor/queue/" + String.valueOf(session.getUserId());
-            List<PatientVisitResponse> response = HttpService.sendRequest(
-                    url, 
-                    null, 
-                    "GET", 
-                    new TypeReference<List<PatientVisitResponse>>(){}
-            );
-            
-            System.out.println("Got " + response.size() + " visits");
-            response.forEach(System.out::println);
-            
-        }catch(InterruptedException e){
-            e.printStackTrace();
-        }catch(IOException e){
-            e.printStackTrace();   
-        }
-  
+    private void getDoctorQueue() {
+        UserSession session = UserSession.getInstance();
+        String url = "http://localhost:8080/doctor/queue/" + session.getUserId();
+
+        HttpTask<Void, List<PatientVisitResponse>> task = new HttpTask<>(
+            url,
+            null,
+            "GET",
+            new TypeReference<>() {}
+        );
+
+        task.setOnSucceeded(e -> {
+            List<PatientVisitResponse> visits = task.getValue();
+            System.out.println("Got " + visits.size() + " visits");
+            visits.forEach(System.out::println);
+
+        });
+
+        task.setOnFailed(e -> {
+            task.getException().printStackTrace();
+        });
+
+        new Thread(task).start();
     }
+
     
 
     @FXML

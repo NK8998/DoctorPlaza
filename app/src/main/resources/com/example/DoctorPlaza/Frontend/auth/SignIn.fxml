@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,12 +13,13 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane style="-fx-background-color: #f6f6f6;" stylesheets="@../../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.SignInController">
    <center>
-      <GridPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <GridPane maxHeight="680.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="900.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,25 +33,25 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="47.66666030883789" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" valignment="BOTTOM" vgrow="ALWAYS" />
-                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="140.0" prefHeight="50.0" vgrow="ALWAYS" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
-                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="252.99999237060547" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="50.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="60.0" valignment="TOP" vgrow="ALWAYS" />
               </rowConstraints>
                <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  <Insets bottom="40.0" left="20.0" right="20.0" top="30.0" />
                </padding>
                <children>
-                  <GridPane prefHeight="88.0" prefWidth="340.0">
+                  <GridPane prefHeight="46.0" prefWidth="390.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.6666768391927" minWidth="10.0" prefWidth="168.66666666666666" />
-                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="177.33331298828125" minWidth="10.0" prefWidth="171.33333333333334" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.3999755859375" minWidth="10.0" prefWidth="194.3999755859375" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="210.39998779296872" minWidth="10.0" prefWidth="164.00002441406247" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label style="-fx-text-fill: #8d8989;" text="Sign In" textFill="#8d8989">
@@ -56,23 +59,23 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" hgap="20.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="95.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" hgap="20.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="0.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                            <children>
                               <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../../../Downloads/facebook-48.png" />
+                                    <Image url="@../../../../../images/facebook-48.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../../../Downloads/twitter-48.png" />
+                                    <Image url="@../../../../../images/twitter-48.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </FlowPane>
                      </children>
                   </GridPane>
-                  <Button fx:id="btnSignIn" maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="35.0" style="-fx-background-color: linear-gradient(to right ,rgba(227, 64, 69, 1) 0%, rgba(242, 63, 87, 1) 50%, rgba(250, 65, 117, 1) 100%); -fx-background-radius: 50; -fx-font-size: 12; -fx-text-fill: white;" text="Sign In" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Button fx:id="btnSignIn" maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="35.0" styleClass="sign-in-btn" text="Sign In" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin>
@@ -83,7 +86,7 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <CheckBox mnemonicParsing="false" style="-fx-text-fill: linear-gradient(to right,rgba(250, 119, 92, 1) 0%, rgba(242, 65, 83, 1) 100%);" text="Remeber Me" />
@@ -93,8 +96,16 @@
                            </font>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
                   </GridPane>
-                  <TextField fx:id="txtEmail" maxHeight="1.7976931348623157E308" promptText="Email" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                  <Label style="-fx-text-fill: #363636; -fx-font-weight: bold;" text="EMAIL" textFill="#ededed" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtEmail" maxHeight="1.7976931348623157E308" promptText="Email" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" styleClass="form-input" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </GridPane.margin>
@@ -107,16 +118,38 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtPassword" maxHeight="1.7976931348623157E308" promptText="Password" style="-fx-background-radius: 50; -fx-background-color: #ededed; -fx-padding: 10;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label style="-fx-text-fill: #363636; -fx-font-weight: bold;" text="Email" textFill="#ededed" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <children>
+                        <PasswordField fx:id="txtPasswordHidden" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="166.0" promptText="Password" styleClass="form-input-pass" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtPasswordVisible" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Password" styleClass="form-input-pass" HBox.hgrow="ALWAYS" />
+                        <HBox HBox.hgrow="NEVER">
+                           <children>
+                              <Button fx:id="btnPasswordHidden" mnemonicParsing="false" onAction="#handleTogglePasswordVisibility" styleClass="toggle-passowrd-visibility">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../images/novisible.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnPasswordVisible" mnemonicParsing="false" onAction="#handleTogglePasswordVisibility" styleClass="toggle-passowrd-visibility">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../images/visible.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <styleClass>
+                        <String fx:value="form-input" />
+                        <String fx:value="form-input-container" />
+                     </styleClass>
+                  </HBox>
                </children>
             </GridPane>
             <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
