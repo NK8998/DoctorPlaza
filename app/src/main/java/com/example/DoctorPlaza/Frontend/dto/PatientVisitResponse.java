@@ -4,8 +4,7 @@
  */
 package com.example.DoctorPlaza.Frontend.dto;
 
-import com.example.DoctorPlaza.Backend.Enums.VisitStatus;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.example.DoctorPlaza.Frontend.Enums.VisitStatus;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -15,6 +14,7 @@ import java.util.UUID;
  */
 public class PatientVisitResponse {
     private UUID visitId;
+    private UUID patientId;
     private String patientName;
     private int patientAge;
     private String symptoms;
@@ -22,6 +22,13 @@ public class PatientVisitResponse {
     private Instant queuedAt;
     private Instant completedAt;
 
+    public UUID getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(UUID patientId) {
+        this.patientId = patientId;
+    }
 
     public UUID getVisitId() {
         return visitId;

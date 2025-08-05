@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Backend.models;
+package com.example.DoctorPlaza.Backend.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import com.example.DoctorPlaza.Backend.models.MedicalRecord;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -13,44 +12,38 @@ import java.util.UUID;
  *
  * @author HP
  */
-@Entity
-@Table(name = "medical_records")
-public class MedicalRecord {
-
-    @Id
-    @GeneratedValue
+public class GetMedicalRecordResponse {
     private UUID id;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "visit_id", nullable = false)
-    private Visit visit;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "doctor_id", nullable = false)
-    private Doctor doctor;
-
-    @Column(name = "notes", columnDefinition = "TEXT", nullable = false)
+    private UUID visitId;
+    private UUID doctorId;
+    private String name;
     private String notes;
-    
-    @Column(name = "diagnosis", columnDefinition = "TEXT", nullable = false)
     private String diagnosis;
-    
-    @Column(name = "prescription", columnDefinition = "TEXT", nullable = false)
     private String prescription;
-    
-    @Column(name = "follow_up", columnDefinition = "TEXT")
     private String followUp;
-    
-    @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = Instant.now();
+    public GetMedicalRecordResponse(UUID id, UUID visitId, UUID doctorId, String name,
+                                    String notes, String diagnosis, String prescription,
+                                    String followUp, Instant createdAt) {
+        this.id = id;
+        this.visitId = visitId;
+        this.doctorId = doctorId;
+        this.name = name;
+        this.notes = notes;
+        this.diagnosis = diagnosis;
+        this.prescription = prescription;
+        this.followUp = followUp;
+        this.createdAt = createdAt;
+    }
+    
+    public String getName() {
+        return name;
     }
 
-    // Getters and Setters
-    
+    public void setName(String name) {
+        this.name = name;
+    }
     
     public String getDiagnosis() {
         return diagnosis;
@@ -84,20 +77,20 @@ public class MedicalRecord {
         this.id = id;
     }
 
-    public Visit getVisit() {
-        return visit;
+    public UUID getVisitId() {
+        return visitId;
     }
 
-    public void setVisit(Visit visit) {
-        this.visit = visit;
+    public void setVisitId(UUID visitId) {
+        this.visitId = visitId;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public UUID getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctorId(UUID doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getNotes() {

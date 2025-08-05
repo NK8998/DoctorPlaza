@@ -42,6 +42,16 @@ public class AuthController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+    
+    @PostMapping("/signup-admin")
+    public ResponseEntity<?> signUpAdmin(@Valid @RequestBody SignupRequest request) {
+        try {
+            UserResponse savedUser = authService.signUpAdmin(request);
+            return new ResponseEntity<UserResponse>(savedUser, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> logIn(@Valid @RequestBody LoginRequest request) {

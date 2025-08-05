@@ -4,9 +4,9 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
-import com.example.DoctorPlaza.Backend.dto.EditRecordRequest;
-import com.example.DoctorPlaza.Backend.dto.MedicalRecordRequest;
-import com.example.DoctorPlaza.Backend.dto.MedicalRecordResponse;
+import com.example.DoctorPlaza.Backend.dto.EditMedicalRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.AddMedicalRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.GetMedicalRecordResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientHistoryResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Doctor;
@@ -62,7 +62,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void addRecord(MedicalRecordRequest request) {
+    public void addRecord(AddMedicalRecordRequest request) {
         Doctor doctor = doctorRepository.findById(request.getDoctorId())
             .orElseThrow(() -> new IllegalArgumentException("Doctor not found"));
 
@@ -83,6 +83,9 @@ public class DoctorServiceImpl implements DoctorService {
         MedicalRecord record = new MedicalRecord();
         record.setVisit(visit);
         record.setDoctor(doctor);
+        record.setDiagnosis(request.getDiagnosis());
+        record.setPrescription(request.getPrescription());
+        record.setFollowUp(request.getFollowUp());
         record.setNotes(request.getNotes());
 
         medicalRecordRepository.save(record);
@@ -90,21 +93,21 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void editRecord(EditRecordRequest request) {
+    public void editRecord(EditMedicalRecordRequest request) {
         MedicalRecord record = medicalRecordRepository
             .findByIdAndDoctorId(request.getRecordId(), request.getDoctorId())
             .orElseThrow(() -> new IllegalArgumentException("Record not found or doctor not authorized"));
 
         record.setNotes(request.getNotes());
+        record.setDiagnosis(request.getDiagnosis());
+        record.setFollowUp(request.getFollowUp());
 
         medicalRecordRepository.save(record);
     }
 
     @Override
-    public List<MedicalRecordResponse> getAllMedicalRecords(UUID id) {
-        List<MedicalRecord> records =  medicalRecordRepository.findAllByDoctorId(id);
-        List<MedicalRecordResponse> response = records.stream().map(MedicalRecordResponse::new).toList();
-        return response;
+    public List<GetMedicalRecordResponse> getAllMedicalRecords(UUID id) {
+        return  medicalRecordRepository.findDetailedRecordsByDoctorId(id);
     }
     
     

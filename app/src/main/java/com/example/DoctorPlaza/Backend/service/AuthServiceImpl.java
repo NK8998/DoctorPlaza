@@ -103,6 +103,37 @@ public class AuthServiceImpl implements AuthService {
         }
 
     }
+    
+     @Override
+    public UserResponse signUpAdmin(SignupRequest request) {
+        
+            try{
+            
+            UserRole role = UserRole.valueOf(request.getRole().toUpperCase());
+            // Check if user already exists
+            if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+                throw new RuntimeException("Email already in use");
+            }
+            
+            if(role != UserRole.ADMIN){
+                throw new RuntimeException("Only for Admins");
+            }
+
+            User user = new User();
+            user.setName(request.getName());
+            user.setEmail(request.getEmail());
+            user.setIsActive(Boolean.TRUE);
+            user.setPasswordHash(passwordService.encode(request.getPassword()));
+            user.setRole(role);
+
+            return mapToResponse(userRepository.save(user));
+            
+            
+            
+        }catch(IllegalArgumentException e){
+            throw new RuntimeException("Invalid role provided");
+        }
+    }
 
 
     @Override
@@ -116,5 +147,7 @@ public class AuthServiceImpl implements AuthService {
 
         return mapToResponse(user);
     }
+
+   
 }
 

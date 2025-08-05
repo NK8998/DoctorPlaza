@@ -13,7 +13,7 @@ import java.util.UUID;
  *
  * @author HP
  */
-public class EditRecordRequest {
+public class EditMedicalRecordRequest {
 
     @NotNull(message = "Record ID is required")
     private UUID recordId;
@@ -24,7 +24,22 @@ public class EditRecordRequest {
     @NotBlank(message = "Updated notes cannot be blank")
     private String notes;
 
+    @NotBlank(message = "Diagnosis cannot be blank")
+    private String diagnosis;
+
+    @NotBlank(message = "Prescription cannot be blank")
+    private String prescription;
+    
+    private String followUp;
+    
     // Getters and Setters
+    public String getFollowUp() {
+        return followUp;
+    }
+
+    public void setFollowUp(String followUp) {
+        this.followUp = followUp;
+    }
 
     public UUID getRecordId() {
         return recordId;
@@ -48,5 +63,21 @@ public class EditRecordRequest {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
     }
 }

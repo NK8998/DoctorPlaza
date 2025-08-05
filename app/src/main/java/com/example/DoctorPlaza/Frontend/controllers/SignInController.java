@@ -77,7 +77,7 @@ public class SignInController implements Initializable {
         request.setEmail(txtEmail.getText());
         request.setPassword(txtPasswordHidden.getText());
         
-        String url = "http://localhost:8080/auth/login";
+        String url = "/auth/login";
         String method = "POST";
         
         HttpTask<Void, UserResponse> task = new HttpTask(
@@ -103,6 +103,7 @@ public class SignInController implements Initializable {
         });
         
         task.setOnFailed(e -> {
+            btnSignIn.setDisable(false);
             task.getException().printStackTrace();
         });
         

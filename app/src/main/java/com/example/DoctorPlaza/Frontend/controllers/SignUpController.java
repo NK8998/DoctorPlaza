@@ -108,6 +108,8 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void handleSignUp(ActionEvent event) {
+        signUpBtn.setDisable(true);
+        
         SignupRequest request = new SignupRequest();
         request.setName(txtUsername.getText());
         request.setEmail(txtEmail.getText());
@@ -118,7 +120,7 @@ public class SignUpController implements Initializable {
             //request.setBio(bioField.getText());
             request.setSpecialization(speciallizationChoiceBox.getValue());
         }
-        String url = "http://localhost:8080/auth/signup";
+        String url = "/auth/signup";
         String method = "POST";
         HttpTask<Void, UserResponse> task =  new HttpTask(
                 url,
@@ -143,8 +145,10 @@ public class SignUpController implements Initializable {
         });
         
         task.setOnFailed(e -> {
+            signUpBtn.setDisable(false);
             //display toast message
             task.getException().printStackTrace();
+
         });
 
         new Thread(task).start();

@@ -2,21 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Backend.dto;
-
+package com.example.DoctorPlaza.Frontend.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.UUID;
 
 /**
  *
  * @author HP
  */
-
-
-public class MedicalRecordRequest {
+public class AddMedicalRecordRequest {
 
     @NotNull(message = "Patient ID is required")
     private UUID patientId;
@@ -29,6 +25,39 @@ public class MedicalRecordRequest {
 
     @NotBlank(message = "Notes cannot be blank")
     private String notes;
+    
+    @NotBlank(message = "diagnosis cannot be blank")
+    private String diagnosis;
+    
+    @NotBlank(message = "prescription cannot be blank")
+    private String prescription;
+        
+    private String followUp;
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
+    }
+
+    public String getFollowUp() {
+        return followUp;
+    }
+
+    public void setFollowUp(String followUp) {
+        this.followUp = followUp;
+    }
+    
 
     // Getters and Setters
     public UUID getPatientId() {
@@ -63,3 +92,4 @@ public class MedicalRecordRequest {
         this.notes = notes;
     }
 }
+

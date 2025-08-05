@@ -21,4 +21,5 @@ public interface AdminService {
     List<User> getAllUsers();
     List<User> getAllUsersExcludingAdmin();
     void assignReceptionistToDoctor(AssignReceptionistRequest request);
+    List<User> getActiveUsers();
 }

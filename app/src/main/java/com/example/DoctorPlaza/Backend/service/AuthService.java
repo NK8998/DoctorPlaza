@@ -14,6 +14,7 @@ import com.example.DoctorPlaza.Backend.models.User;
  * @author HP
  */
 public interface AuthService {
+    UserResponse signUpAdmin(SignupRequest request);
     UserResponse signUp(SignupRequest request); 
     UserResponse logIn(LoginRequest request);
 }
