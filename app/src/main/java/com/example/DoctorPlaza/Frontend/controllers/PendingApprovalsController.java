@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,8 +19,10 @@ import javafx.scene.control.Button;
  */
 public class PendingApprovalsController implements Initializable {
 
-    @FXML
+   @FXML
     private Button btnAdminDashboard;
+    @FXML
+    private Button btnPendingApprovals;
     @FXML
     private Button btnUserManagement;
     @FXML
@@ -35,14 +38,22 @@ public class PendingApprovalsController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
+    }
+
+    @FXML
+    private void handlePendingApprovals(ActionEvent event) {
+        System.out.println("alradey in Pending Approvals page");
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
     }
     
 }

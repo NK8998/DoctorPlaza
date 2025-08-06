@@ -13,8 +13,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Button;
 
 public class ReceptionistDashboardController implements Initializable {
+
+    @FXML
+    private Button btnDashboard;
+    @FXML
+    private Button btnRegister;
+    @FXML
+    private Button btnQueue;
+    @FXML
+    private Button btnDischarge;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

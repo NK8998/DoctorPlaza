@@ -4,8 +4,11 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -15,12 +18,29 @@ import javafx.fxml.Initializable;
  */
 public class RegisterPatientController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // Initialization logic if needed
+    }
+
+    @FXML
+    private void handleDashboard(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionistDashboard.fxml", new ReceptionistDashboardController());
+    }
+
+    @FXML
+    private void handleRegister(ActionEvent event) {
+         System.out.println("Already on Register Patient page");
+    }
+
+    @FXML
+    private void handleQueue(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new QueueManagementController());
+    }
+
+    @FXML
+    private void handleDischarge(ActionEvent event) {
+       SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new DischargeController()); 
+    }  
     
 }

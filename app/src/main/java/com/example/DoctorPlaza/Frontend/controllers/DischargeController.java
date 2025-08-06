@@ -1,5 +1,6 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,17 +23,17 @@ public class DischargeController implements Initializable {
 
     @FXML
     private void handleDashboard(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionistDashboard.fxml");
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionistDashboard.fxml", new ReceptionistDashboardController());
     }
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml");
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new RegisterPatientController());
     }
 
     @FXML
     private void handleQueue(ActionEvent event) {
-        switchScene(event, "/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml");
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new QueueManagementController());
     }
 
     @FXML
@@ -41,14 +42,5 @@ public class DischargeController implements Initializable {
         System.out.println("Already on Discharge page");
     }
 
-    private void switchScene(ActionEvent event, String fxmlPath) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

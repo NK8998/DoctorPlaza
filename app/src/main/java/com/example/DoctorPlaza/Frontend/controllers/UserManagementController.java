@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -38,18 +39,22 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
     }
 
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
+        System.out.println("alradey in User Management page");
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
     }
     
 }
