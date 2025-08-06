@@ -1,91 +1,112 @@
-
 # 🏥 DoctorPlaza – Medical Appointment Management System
 
-DoctorPlaza is a full-stack Java-based application designed to manage medical appointments, visits, and patient-doctor interactions. Built with a **JavaFX frontend** and a **Spring Boot backend**, the app provides a modular, maintainable architecture suitable for clinics and hospitals. The backend handles data storage, logic, and service orchestration, while the frontend offers a clean, responsive desktop UI.
+**DoctorPlaza** is a full-stack Java desktop application for managing doctor-patient relationships, visits, and medical records. It combines a clean **JavaFX frontend** with a modular **Spring Boot backend**, connected via Gradle, making it a great showcase of full-stack Java proficiency.
 
 ---
 
-## 🔧 Tech Stack
+## 🧰 Tech Stack
 
-### Backend:
+### 🔙 Backend (Spring Boot)
 
-* **Java 17**
-* **Spring Boot** (REST API, JPA, Validation)
-* **PostgreSQL**
+* **Java 21**
+* **Spring Boot** (Web, JPA, Validation)
+* **PostgreSQL** for persistence
 * **Gradle** for build automation
 
-### Frontend:
+### 🔜 Frontend (JavaFX)
 
-* **JavaFX** (FXML-based UI components)
-* **Controllers wired via Spring’s Dependency Injection**
-
----
-
-## 🧠 Key Features
-
-* 🧾 **Patient Management:** Register, update, and view patient details.
-* 🩺 **Doctor & Specialization Handling:** Manage doctors and assign specializations.
-* 📅 **Visit Scheduling:** Create, update, and log medical visits.
-* 📝 **Medical Records:** Link diagnoses and notes to each visit.
-* 🧑‍⚕️ **User Roles:** Base structure built for expanding into role-based access (e.g., admin, doctor, receptionist).
-* 🛠️ **Modular Backend:** Separated into DTOs, services, repositories, and controllers for clean maintainability.
+* **JavaFX (FXML)** for UI rendering
+* **SceneManager** for handling view transitions
+* **UserSession** for managing session-like state
+* **Dependency injection** with Spring
 
 ---
 
-## 🗃️ Project Structure
+## ✨ Features
+
+* 👥 **User Registration**: Patients, Doctors, and more (structure is extensible)
+* 📄 **Medical Records**: Log notes per visit, linked to doctors and patients
+* 📅 **Visit Management**: Schedule and update patient-doctor visits
+* 🔍 **Role-ready System**: Set up for future user-based access control
+* 🔄 **DTO-based Data Flow**: Separation of concerns between layers
+* 🧱 **Clear Backend Architecture**: Controllers, Services, Repos, and DTOs
+
+---
+
+## 📁 Project Structure
+
+### Frontend (`/frontend`)
 
 ```
-DoctorPlaza/
-├── backend/             # Spring Boot app
-│   ├── controller/
-│   ├── dto/
-│   ├── model/
-│   ├── repository/
-│   └── service/
-├── frontend/            # JavaFX UI
-│   ├── fxml/
-│   ├── controller/
-│   └── MainApp.java
-├── build.gradle
-└── settings.gradle
+Enums/             # User roles, visit types, etc.
+controllers/       # JavaFX controllers for each FXML view
+dto/               # Frontend data transfer objects
+service/           # Handles API communication and business logic
+tasks/             # Background threads for async tasks
+utils/             # Reusable utility functions
+SceneManager.java  # Manages view transitions
+UserSession.java   # Stores current user session
+```
+
+### Backend (`/backend`)
+
+```
+Enums/                  # Shared enums like UserRole
+controller/             # REST controllers
+dto/                    # Request/response objects
+models/                 # JPA entities
+repository/             # Spring Data Repositories
+service/                # Business logic layer
+SpringBootLauncher.java # Entry point for backend
 ```
 
 ---
 
-## ⚙️ Running the App
+## 🚀 Getting Started
 
-1. Clone the repository:
+1. **Clone the repo**
 
    ```bash
    git clone https://github.com/yourusername/doctorplaza.git
    cd doctorplaza
    ```
 
-2. Set up your PostgreSQL database and update `application.properties`.
+2. **Set up PostgreSQL**
+   Create a DB and update the `application.properties` in the backend with your credentials.
 
-3. Run the backend:
+3. **Run the backend**
 
    ```bash
    ./gradlew bootRun
    ```
 
-4. Launch the JavaFX frontend from your IDE or via `MainApp.java`.
+4. **Run the frontend**
+   Launch `MainApp` or your JavaFX entry point via your IDE.
 
 ---
 
-## 🚧 Future Improvements
+## 🛠 Status
 
-* 🔐 Implement Spring Security and session handling
-* 🌐 Dockerize backend for easier deployment
-* 📊 Add data analytics dashboard
-* 🧪 Add unit/integration testing
-
----
-
-## 🤝 Contributions & Feedback
-
-This project was built as a learning platform and is still evolving. Feedback and pull requests are welcome!
+✅ Fully working core features (CRUD, scheduling, record logging)
+🧪 Backend and frontend communication via DTOs
+🔒 Role-based access to be added (Spring Security planned)
+📦 Modular and maintainable codebase
 
 ---
 
-Let me know if you'd like a **shorter version**, or one that's more recruiter-focused (e.g., resume-linked). I can also help you add badges, diagrams, or a simple GIF recording if you want that extra flair.
+## 🗺️ Future Improvements
+
+* 🛡️ Add session/authentication handling (e.g., Spring Security)
+* 🧪 Unit/integration tests
+* 🌐 REST documentation (e.g., Swagger/OpenAPI)
+* 🐳 Dockerized backend
+* 📈 Admin analytics dashboard
+
+
+## 🧠 Built With Learning in Mind
+
+DoctorPlaza was built to practice real-world backend structuring, JavaFX-Spring integration, and DTO-driven workflows. If you’re a developer curious about building maintainable Java apps—or a recruiter evaluating backend depth—this project aims to show both.
+
+
+
+You crushed this stack. Let’s show it off right.
