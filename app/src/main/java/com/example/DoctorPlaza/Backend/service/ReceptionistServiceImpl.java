@@ -4,8 +4,12 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
-import com.example.DoctorPlaza.Backend.dto.PatientRequest;
+import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
+import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
+import com.example.DoctorPlaza.Backend.dto.VisitStatusTotals;
 import com.example.DoctorPlaza.Backend.models.Doctor;
 import com.example.DoctorPlaza.Backend.models.Patient;
 import com.example.DoctorPlaza.Backend.models.Receptionist;
@@ -45,19 +49,21 @@ public class ReceptionistServiceImpl implements ReceptionistService {
     private ReceptionistDoctorRepository receptionistDoctorRepository;
 
     @Override
-    public void registerPatient(PatientRequest request) {
+    public void registerPatient(RegisterPatientRequest request) {
         Patient patient = new Patient();
         patient.setName(request.getName());
         patient.setAge(request.getAge());
         patient.setBillAddress(request.getBillAddress());
         patient.setPhoneNumber(request.getPhoneNumber());
+        patient.setSymptoms(request.getSymptoms());
+        patient.setReceptionistId(request.getReceptionistId());
         
         patientRepository.save(patient);
     }
 
     @Override
-    public List<Doctor> getAssignedDoctors(UUID id) {
-        return receptionistDoctorRepository.findDoctorsByReceptionistId(id);
+    public List<AssignedDoctorsResponse> getAssignedDoctors(UUID id) {
+        return receptionistDoctorRepository.findDoctorsWithPatientCountByReceptionistId(id);
     }
 
     @Override
@@ -80,7 +86,6 @@ public class ReceptionistServiceImpl implements ReceptionistService {
         visit.setPatient(patient);
         visit.setDoctor(doctor);
         visit.setReceptionist(receptionist);
-        visit.setSymptoms(request.getSymptoms());
 
         return visitRepository.save(visit);
     }
@@ -90,5 +95,23 @@ public class ReceptionistServiceImpl implements ReceptionistService {
     public void markPatientVisitAsComplete(UUID id) {
         visitRepository.markVisitAsComplete(id);
     }
+
+    @Override
+    public List<Patient> getRegisteredPatientsByReceptionistId(UUID id) {
+        return patientRepository.findByReceptionistId(id);
+    }
+    
+    @Override
+    @Transactional
+    public ReceptionistDashboardResponse getReceptionistDashboard(UUID id){
+        VisitStatusTotals visitStatustTotal =  visitRepository.getVisitStatusTotals(id);
+        List<AssignedDoctorsResponse> assingedDoctors = receptionistDoctorRepository.findDoctorsWithPatientCountByReceptionistId(id);
+        ReceptionistDashboardResponse response = new ReceptionistDashboardResponse();
+        response.setVisitsStatusTotals(visitStatustTotal);
+        response.setAssignedDoctors(assingedDoctors);
+        return response;
+    }
+            
+    
     
 }

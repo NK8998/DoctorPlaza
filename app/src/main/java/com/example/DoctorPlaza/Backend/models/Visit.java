@@ -35,9 +35,6 @@ public class Visit {
     @JoinColumn(name = "receptionist_id", nullable = false)
     private Receptionist receptionist;
 
-    @Column(name = "symptoms", columnDefinition = "TEXT", nullable = false)
-    private String symptoms;
-
     @Column(name = "queued_at", nullable = false, updatable = false)
     private Instant queuedAt;
 
@@ -87,14 +84,6 @@ public class Visit {
 
     public void setReceptionist(Receptionist receptionist) {
         this.receptionist = receptionist;
-    }
-
-    public String getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
     }
 
     public Instant getQueuedAt() {

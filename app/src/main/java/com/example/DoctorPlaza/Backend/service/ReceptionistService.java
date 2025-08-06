@@ -4,9 +4,10 @@
  */
 package com.example.DoctorPlaza.Backend.service;
 
-import com.example.DoctorPlaza.Backend.dto.PatientRequest;
+import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
-import com.example.DoctorPlaza.Backend.models.Doctor;
 import com.example.DoctorPlaza.Backend.models.Patient;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import java.util.List;
@@ -18,9 +19,11 @@ import java.util.UUID;
  */
 public interface ReceptionistService {
     
-    void registerPatient(PatientRequest request);
-    List<Doctor> getAssignedDoctors(UUID id);
+    void registerPatient(RegisterPatientRequest request);
+    List<Patient> getRegisteredPatientsByReceptionistId(UUID id);
+    List<AssignedDoctorsResponse> getAssignedDoctors(UUID id);
     Visit addPatientToDoctorQueue(VisitRequest request);
     void markPatientVisitAsComplete(UUID id);
+    ReceptionistDashboardResponse getReceptionistDashboard(UUID id);
     
 }

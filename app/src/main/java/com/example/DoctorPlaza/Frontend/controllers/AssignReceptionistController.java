@@ -5,6 +5,7 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.Enums.UserRole;
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.dto.AllUsersResponse;
 import com.example.DoctorPlaza.Frontend.dto.AssignReceptionistRequest;
 import com.example.DoctorPlaza.Frontend.dto.StringMessageResponse;
@@ -187,17 +188,21 @@ public class AssignReceptionistController implements Initializable {
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
         // Navigation logic
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
         // Navigation logic
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
+
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
         // Navigation logic
-        
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
+
     }
 
     @FXML

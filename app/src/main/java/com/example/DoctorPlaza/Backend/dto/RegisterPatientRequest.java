@@ -6,12 +6,13 @@ package com.example.DoctorPlaza.Backend.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import java.util.UUID;
 
 /**
  *
  * @author HP
  */
-public class PatientRequest {
+public class RegisterPatientRequest {
     @NotBlank private String name;
 
     @Min(0) private int age;
@@ -19,12 +20,22 @@ public class PatientRequest {
     @NotBlank private String phoneNumber;
 
     @NotBlank private String billAddress;
+    
+    @NotBlank private String symptoms;
+    
+    @NotBlank private UUID receptionistId;
+    
+    public RegisterPatientRequest(){
+        
+    }
 
-    public PatientRequest(String name, int age, String phoneNumber, String billAddress) {
+    public RegisterPatientRequest(String name, int age, String phoneNumber, String billAddress, String symptoms, UUID receptionistId) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.billAddress = billAddress;
+        this.symptoms = symptoms;
+        this.receptionistId = receptionistId;
     }
 
     public String getName() {
@@ -58,6 +69,23 @@ public class PatientRequest {
     public void setBillAddress(String billAddress) {
         this.billAddress = billAddress;
     }
+
+    public String getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(String symptoms) {
+        this.symptoms = symptoms;
+    }
+
+    public UUID getReceptionistId() {
+        return receptionistId;
+    }
+
+    public void setReceptionistId(UUID receptionistId) {
+        this.receptionistId = receptionistId;
+    }
+
     
     
     

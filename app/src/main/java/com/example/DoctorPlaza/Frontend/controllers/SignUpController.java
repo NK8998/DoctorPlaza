@@ -31,7 +31,6 @@ public class SignUpController implements Initializable {
     private TextField txtUsername;
     @FXML
     private TextField txtEmail;
-    private PasswordField txtPassword;
     @FXML
     private ComboBox<String> roleChoiceBox;  // ✅ changed to <String>
     @FXML
@@ -113,7 +112,7 @@ public class SignUpController implements Initializable {
         SignupRequest request = new SignupRequest();
         request.setName(txtUsername.getText());
         request.setEmail(txtEmail.getText());
-        request.setPassword(txtPassword.getText());
+        request.setPassword(txtPasswordVisible.getText());
         request.setRole(roleChoiceBox.getValue());
 
         if ("DOCTOR".equalsIgnoreCase(request.getRole())) {
