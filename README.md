@@ -106,7 +106,3 @@ SpringBootLauncher.java # Entry point for backend
 ## 🧠 Built With Learning in Mind
 
 DoctorPlaza was built to practice real-world backend structuring, JavaFX-Spring integration, and DTO-driven workflows. If you’re a developer curious about building maintainable Java apps—or a recruiter evaluating backend depth—this project aims to show both.
-
-
-
-You crushed this stack. Let’s show it off right.
