@@ -2,11 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Backend.dto;
+package com.example.DoctorPlaza.Frontend.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -14,9 +11,13 @@ import java.util.UUID;
  * @author HP
  */
 public class VisitRequest {
-    @NotBlank private UUID patientId;
-    @NotBlank private UUID doctorId;
-    @NotBlank private UUID receptionistId;
+    private UUID patientId;
+    private UUID doctorId;
+    private UUID receptionistId;
+    
+    public VisitRequest(){
+        
+    }
 
     public VisitRequest(UUID patientId, UUID doctorId, UUID receptionistId) {
         this.patientId = patientId;

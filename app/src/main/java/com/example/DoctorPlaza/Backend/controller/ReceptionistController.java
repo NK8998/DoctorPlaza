@@ -5,12 +5,12 @@
 package com.example.DoctorPlaza.Backend.controller;
 
 import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
 import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistQueueManagementResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
-import com.example.DoctorPlaza.Backend.models.Doctor;
 import com.example.DoctorPlaza.Backend.models.Patient;
-import com.example.DoctorPlaza.Backend.models.Visit;
 import com.example.DoctorPlaza.Backend.service.ReceptionistService;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +51,16 @@ public class ReceptionistController {
         }
     }
     
+    @GetMapping("/queued-patients/{id}")
+    public ResponseEntity<?> getQueuedPatients(@PathVariable UUID id) {
+        try {
+            List<PatientDoctorResponse> patients = receptionistService.getPatientsInQueue(id);
+            return new ResponseEntity<List<PatientDoctorResponse>>(patients, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    
     @GetMapping("/dashboard/{id}")
     public ResponseEntity<?> getReceptionistDashboard(@PathVariable UUID id) {
         try {
@@ -60,6 +70,17 @@ public class ReceptionistController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+    
+    @GetMapping("/queue-management/{id}")
+    public ResponseEntity<?> getReceptionistQueueueManagement(@PathVariable UUID id) {
+        try {
+            ReceptionistQueueManagementResponse dashboard = receptionistService.getQueueManagement(id);
+            return new ResponseEntity<ReceptionistQueueManagementResponse>(dashboard, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    
     @PostMapping("/patients")
     public ResponseEntity<?> registerPatient(@RequestBody RegisterPatientRequest request) {
         try {
@@ -83,8 +104,8 @@ public class ReceptionistController {
     @PostMapping("/queue")
     public ResponseEntity<?> addPatientToDoctorQueue(@RequestBody VisitRequest request) {
         try {
-            Visit visit = receptionistService.addPatientToDoctorQueue(request);
-            return new ResponseEntity<Visit>(visit, HttpStatus.OK);
+            receptionistService.addPatientToDoctorQueue(request);
+            return new ResponseEntity(Map.of("message", "Patient Added to queue"), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

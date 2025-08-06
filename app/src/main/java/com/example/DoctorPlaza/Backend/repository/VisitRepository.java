@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Backend.repository;
 
+import com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientHistoryResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitStatusTotals;
@@ -37,7 +38,7 @@ public interface VisitRepository extends JpaRepository<Visit, UUID> {
        "FROM Visit v JOIN v.patient p " +
        "WHERE v.doctor.id = :doctorId AND v.status = com.example.DoctorPlaza.Backend.Enums.VisitStatus.COMPLETED")
     List<PatientVisitResponse> findSeenPatients(@Param("doctorId") UUID doctorId);
-    
+        
     @Query("SELECT new com.example.DoctorPlaza.Backend.dto.PatientHistoryResponse(" +
            "v.id, d.name, d.specialization, v.status, v.queuedAt, v.completedAt) " +
            "FROM Visit v " +
@@ -45,6 +46,24 @@ public interface VisitRepository extends JpaRepository<Visit, UUID> {
            "WHERE v.patient.id = :patientId " +
            "ORDER BY v.queuedAt DESC")
     List<PatientHistoryResponse> getPatientHistory(@Param("patientId") UUID patientId);
+    
+    @Query("""
+        SELECT new com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse(
+            p.id,
+            p.name,
+            p.age,
+            p.phoneNumber,
+            p.symptoms,
+            v.queuedAt,
+            d.name
+        )
+        FROM Visit v
+        JOIN v.patient p
+        JOIN v.doctor d
+        WHERE v.status = 'WAITING'
+        AND p.receptionistId = :receptionistId
+    """)
+    List<PatientDoctorResponse> getPatientsInQueue(@Param("receptionistId") UUID receptionistId);
     
     @Query(value = """
         SELECT 

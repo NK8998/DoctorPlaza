@@ -5,8 +5,10 @@
 package com.example.DoctorPlaza.Backend.service;
 
 import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
 import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistQueueManagementResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
 import com.example.DoctorPlaza.Backend.models.Patient;
 import com.example.DoctorPlaza.Backend.models.Visit;
@@ -25,5 +27,7 @@ public interface ReceptionistService {
     Visit addPatientToDoctorQueue(VisitRequest request);
     void markPatientVisitAsComplete(UUID id);
     ReceptionistDashboardResponse getReceptionistDashboard(UUID id);
+    ReceptionistQueueManagementResponse getQueueManagement(UUID id);
+    List<PatientDoctorResponse> getPatientsInQueue(UUID id);
     
 }

@@ -5,9 +5,11 @@
 package com.example.DoctorPlaza.Backend.service;
 
 import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
 import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistQueueManagementResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
 import com.example.DoctorPlaza.Backend.dto.VisitStatusTotals;
 import com.example.DoctorPlaza.Backend.models.Doctor;
@@ -110,6 +112,22 @@ public class ReceptionistServiceImpl implements ReceptionistService {
         response.setVisitsStatusTotals(visitStatustTotal);
         response.setAssignedDoctors(assingedDoctors);
         return response;
+    }
+
+    @Override
+    public ReceptionistQueueManagementResponse getQueueManagement(UUID id) {
+        List<AssignedDoctorsResponse> assignedDoctors = receptionistDoctorRepository.findDoctorsWithPatientCountByReceptionistId(id);
+        List<Patient> patientsNotInQueue = patientRepository.findPatientsNotInQueueByReceptionistId(id);
+                
+        ReceptionistQueueManagementResponse response  = new ReceptionistQueueManagementResponse();
+        response.setAssignedDoctors(assignedDoctors);
+        response.setPatientsNotInQueue(patientsNotInQueue);
+        return response;
+    }
+
+    @Override
+    public List<PatientDoctorResponse> getPatientsInQueue(UUID id) {
+        return visitRepository.getPatientsInQueue(id);
     }
             
     

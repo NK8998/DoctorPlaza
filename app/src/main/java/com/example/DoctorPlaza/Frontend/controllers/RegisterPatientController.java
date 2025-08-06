@@ -4,6 +4,7 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.ReceptionistDashboardResponse;
 import com.example.DoctorPlaza.Frontend.dto.RegisterPatientRequest;
@@ -128,14 +129,22 @@ public class RegisterPatientController implements Initializable {
 
     @FXML
     private void handleDashboard(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/receptionistDashboard.fxml", new ReceptionistDashboardController());
+    }
+
+    @FXML
+    private void handleRegister(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new RegisterPatientController());
     }
 
     @FXML
     private void handleQueue(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new QueueManagementController());
     }
 
     @FXML
     private void handleDischarge(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/Discharge.fxml", new DischargeController());
     }
     
 }
