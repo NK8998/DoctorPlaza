@@ -8,7 +8,6 @@ import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.AssignedDoctorsResponse;
 import com.example.DoctorPlaza.Frontend.dto.Patient;
-import com.example.DoctorPlaza.Frontend.dto.ReceptionistDashboardResponse;
 import com.example.DoctorPlaza.Frontend.dto.ReceptionistQueueManagementResponse;
 import com.example.DoctorPlaza.Frontend.dto.StringMessageResponse;
 import com.example.DoctorPlaza.Frontend.dto.VisitRequest;
@@ -232,6 +231,7 @@ public class QueueManagementController implements Initializable {
     private void handleDashboard(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/receptionistDashboard.fxml", new ReceptionistDashboardController());
     }
+    
 
     @FXML
     private void handleRegister(ActionEvent event) {
@@ -241,11 +241,13 @@ public class QueueManagementController implements Initializable {
     @FXML
     private void handleQueue(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/queueManagement.fxml", new QueueManagementController());
+        System.out.println("Already on Queue Management page");
+ 
     }
 
     @FXML
     private void handleDischarge(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/Discharge.fxml", new DischargeController());
-    }
+     SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new DischargeController());
+    } 
     
 }

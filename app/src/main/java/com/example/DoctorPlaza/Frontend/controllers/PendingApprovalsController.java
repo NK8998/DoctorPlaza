@@ -5,12 +5,14 @@
 package com.example.DoctorPlaza.Frontend.controllers;
 
 import com.example.DoctorPlaza.Frontend.SceneManager;
+
 import com.example.DoctorPlaza.Frontend.dto.AllUsersResponse;
 import com.example.DoctorPlaza.Frontend.dto.StringMessageResponse;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import static com.example.DoctorPlaza.Frontend.utils.Utils.showError;
 import static com.example.DoctorPlaza.Frontend.utils.Utils.showInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,8 +38,10 @@ import javafx.scene.layout.VBox;
  */
 public class PendingApprovalsController implements Initializable {
 
-    @FXML
+   @FXML
     private Button btnAdminDashboard;
+    @FXML
+    private Button btnPendingApprovals;
     @FXML
     private Button btnUserManagement;
     @FXML
@@ -182,19 +186,31 @@ public class PendingApprovalsController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
+    }
+
+    @FXML
+    private void handlePendingApprovals(ActionEvent event) {
+        System.out.println("alradey in Pending Approvals page");
+
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
 
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
+
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
 
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
+        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
+
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
+
     }
     
 }
