@@ -5,6 +5,7 @@
 package com.example.DoctorPlaza.Backend.repository;
 
 import com.example.DoctorPlaza.Backend.models.Patient;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,6 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author HP
  */
 public interface PatientRepository extends JpaRepository<Patient, UUID> {
-    
-    //retrieve patient 
+
+    List<Patient> findByReceptionistId(UUID receptionistId);
 }

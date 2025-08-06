@@ -17,7 +17,6 @@ public class PatientHistoryResponse {
     private UUID visitId;
     private String doctorName;
     private String doctorSpecialization;
-    private String symptoms;
     private VisitStatus status;
     private Instant queuedAt;
     private Instant completedAt;
@@ -26,7 +25,6 @@ public class PatientHistoryResponse {
         UUID visitId,
         String doctorName,
         String doctorSpecialization,
-        String symptoms,
         VisitStatus status,
         Instant queuedAt,
         Instant completedAt
@@ -34,7 +32,6 @@ public class PatientHistoryResponse {
         this.visitId = visitId;
         this.doctorName = doctorName;
         this.doctorSpecialization = doctorSpecialization;
-        this.symptoms = symptoms;
         this.status = status;
         this.queuedAt = queuedAt;
         this.completedAt = completedAt;
@@ -63,14 +60,6 @@ public class PatientHistoryResponse {
 
     public void setDoctorSpecialization(String doctorSpecialization) {
         this.doctorSpecialization = doctorSpecialization;
-    }
-
-    public String getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
     }
 
     public VisitStatus getStatus() {

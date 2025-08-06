@@ -4,12 +4,16 @@
  */
 package com.example.DoctorPlaza.Backend.controller;
 
-import com.example.DoctorPlaza.Backend.dto.PatientRequest;
+import com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse;
+import com.example.DoctorPlaza.Backend.dto.RegisterPatientRequest;
+import com.example.DoctorPlaza.Backend.dto.ReceptionistDashboardResponse;
 import com.example.DoctorPlaza.Backend.dto.VisitRequest;
 import com.example.DoctorPlaza.Backend.models.Doctor;
+import com.example.DoctorPlaza.Backend.models.Patient;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import com.example.DoctorPlaza.Backend.service.ReceptionistService;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,11 +41,30 @@ public class ReceptionistController {
         this.receptionistService = receptionistService;
     }
     
+    @GetMapping("/patients/{id}")
+    public ResponseEntity<?> getRegisteredPatients(@PathVariable UUID id) {
+        try {
+            List<Patient> patients = receptionistService.getRegisteredPatientsByReceptionistId(id);
+            return new ResponseEntity<List<Patient>>(patients, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    @GetMapping("/dashboard/{id}")
+    public ResponseEntity<?> getReceptionistDashboard(@PathVariable UUID id) {
+        try {
+            ReceptionistDashboardResponse dashboard = receptionistService.getReceptionistDashboard(id);
+            return new ResponseEntity<ReceptionistDashboardResponse>(dashboard, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
     @PostMapping("/patients")
-    public ResponseEntity<?> registerPatient(@RequestBody PatientRequest request) {
+    public ResponseEntity<?> registerPatient(@RequestBody RegisterPatientRequest request) {
         try {
             receptionistService.registerPatient(request);
-            return new ResponseEntity("patient added", HttpStatus.CREATED);
+            return new ResponseEntity(Map.of("message", "Patient Added"), HttpStatus.CREATED);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -50,8 +73,8 @@ public class ReceptionistController {
     @GetMapping("/doctors/{id}")
     public ResponseEntity<?> getAssignedDoctors(@PathVariable UUID id) {
         try {
-            List<Doctor> doctors = receptionistService.getAssignedDoctors(id);
-            return new ResponseEntity<List<Doctor>>(doctors, HttpStatus.OK);
+            List<AssignedDoctorsResponse> doctors = receptionistService.getAssignedDoctors(id);
+            return new ResponseEntity<List<AssignedDoctorsResponse>>(doctors, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

@@ -4,7 +4,6 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
-
 import com.example.DoctorPlaza.Frontend.Enums.UserRole;
 import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.dto.AllUsersResponse;
@@ -37,7 +36,7 @@ import javafx.scene.layout.VBox;
  */
 public class AssignReceptionistController implements Initializable {
 
-   @FXML
+    @FXML
     private Button btnAdminDashboard;
     @FXML
     private Button btnPendingApprovals;
@@ -183,24 +182,27 @@ public class AssignReceptionistController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
+        // Navigation logic
     }
 
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
+        // Navigation logic
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
+        // Navigation logic
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
 
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
-        System.out.println("alradey in Assign Receptionist page");
-        
+        // Navigation logic
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
+
     }
 
     @FXML

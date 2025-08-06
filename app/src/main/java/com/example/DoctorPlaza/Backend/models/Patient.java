@@ -34,19 +34,42 @@ public class Patient {
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
+    
+    @Column(name = "symptoms", nullable = false)
+    private String symptoms;
 
     @Column(name = "bill_address", nullable = false)
     private String billAddress;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
-    
+
+    @Column(name = "receptionist_id", nullable = false, updatable = false)
+    private UUID receptionistId;
+
     // --- Constructors ---
     public Patient() {
         this.id = UUID.randomUUID();
         this.createdAt = Instant.now();
     }
 
+    public UUID getReceptionistId() {
+        return receptionistId;
+    }
+
+    public void setReceptionistId(UUID receptionistId) {
+        this.receptionistId = receptionistId;
+    }
+    
+    
+    public String getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(String symptoms) {
+        this.symptoms = symptoms;
+    }
+    
     // --- Getters and Setters ---
     public UUID getId() {
         return id;
