@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.DoctorPlaza.Backend.dto;
+package com.example.DoctorPlaza.Frontend.dto;
 
+import com.example.DoctorPlaza.Backend.dto.*;
 import com.example.DoctorPlaza.Backend.models.MedicalRecord;
 import java.time.Instant;
 import java.util.UUID;
@@ -12,20 +13,47 @@ import java.util.UUID;
  *
  * @author HP
  */
-public class MedicalRecordResponse {
+public class GetMedicalRecordResponse {
     private UUID id;
     private UUID visitId;
     private UUID doctorId;
+    private String name;
     private String notes;
+    private String diagnosis;
+    private String prescription;
+    private String followUp;
     private Instant createdAt;
 
-    // constructor
-    public MedicalRecordResponse(MedicalRecord record) {
-        this.id = record.getId();
-        this.visitId = record.getVisit().getId();
-        this.doctorId = record.getDoctor().getId();
-        this.notes = record.getNotes();
-        this.createdAt = record.getCreatedAt();
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
+    }
+
+    public String getFollowUp() {
+        return followUp;
+    }
+
+    public void setFollowUp(String followUp) {
+        this.followUp = followUp;
     }
 
     public UUID getId() {

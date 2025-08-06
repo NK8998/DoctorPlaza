@@ -16,6 +16,15 @@ public class UserResponse {
     private String name;
     private String email;
     private UserRole role;
+    private boolean isActive;
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 
     public UUID getId() {
         return id;

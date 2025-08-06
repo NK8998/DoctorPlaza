@@ -4,9 +4,9 @@
  */
 package com.example.DoctorPlaza.Backend.controller;
 
-import com.example.DoctorPlaza.Backend.dto.EditRecordRequest;
-import com.example.DoctorPlaza.Backend.dto.MedicalRecordRequest;
-import com.example.DoctorPlaza.Backend.dto.MedicalRecordResponse;
+import com.example.DoctorPlaza.Backend.dto.EditMedicalRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.AddMedicalRecordRequest;
+import com.example.DoctorPlaza.Backend.dto.GetMedicalRecordResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientHistoryResponse;
 import com.example.DoctorPlaza.Backend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Backend.models.Doctor;
@@ -14,6 +14,7 @@ import com.example.DoctorPlaza.Backend.models.MedicalRecord;
 import com.example.DoctorPlaza.Backend.models.Visit;
 import com.example.DoctorPlaza.Backend.service.DoctorService;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,28 +76,28 @@ public class DoctorController {
     @GetMapping("/records/{doctorId}")
     public ResponseEntity<?> getAllMedicalRecord(@PathVariable UUID doctorId) {
         try {
-            List<MedicalRecordResponse> list = doctorService.getAllMedicalRecords(doctorId);
-            return new ResponseEntity<List<MedicalRecordResponse>>(list, HttpStatus.OK);
+            List<GetMedicalRecordResponse> list = doctorService.getAllMedicalRecords(doctorId);
+            return new ResponseEntity<List<GetMedicalRecordResponse>>(list, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
     
     @PostMapping("/records/add")
-    public ResponseEntity<?> insertMedicalRecord(@RequestBody MedicalRecordRequest request) {
+    public ResponseEntity<?> insertMedicalRecord(@RequestBody AddMedicalRecordRequest request) {
         try {
             doctorService.addRecord(request);
-            return new ResponseEntity<>("Record succesfully added", HttpStatus.OK);
+            return new ResponseEntity<>(Map.of("message", "Record added successfully."), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
     
     @PatchMapping("/records/update/{recordId}")
-    public ResponseEntity<?> EditMedicalRecord(@RequestBody EditRecordRequest request, @PathVariable UUID recordId) {
+    public ResponseEntity<?> EditMedicalRecord(@RequestBody EditMedicalRecordRequest request, @PathVariable UUID recordId) {
         try {
             doctorService.editRecord(request);
-            return new ResponseEntity<>("Record succesfully updated", HttpStatus.OK);
+            return new ResponseEntity<>(Map.of("message", "Record updated successfully."), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

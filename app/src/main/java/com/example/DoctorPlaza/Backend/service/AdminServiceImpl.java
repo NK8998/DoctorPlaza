@@ -79,4 +79,9 @@ public class AdminServiceImpl implements AdminService{
     receptionistDoctorRepository.save(rd);
     }
     
+    @Override
+    public List<User> getActiveUsers(){
+        return userRepository.findByIsActive(true);
+    }
+    
 }

@@ -9,6 +9,7 @@ import com.example.DoctorPlaza.Backend.models.User;
 import com.example.DoctorPlaza.Backend.service.AdminService;
 import com.example.DoctorPlaza.Backend.service.AuthService;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class AdminController {
     public ResponseEntity<?> getAllPendingUsers() {
         try {
             List<User> pendingUsers = adminService.getAllPendingUsers();
-            return new ResponseEntity<List<User>>(pendingUsers, HttpStatus.FOUND);
+            return new ResponseEntity<List<User>>(pendingUsers, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -51,7 +52,17 @@ public class AdminController {
     public ResponseEntity<?> getAllUsers() {
         try {
             List<User> users = adminService.getAllUsers();
-            return new ResponseEntity<List<User>>(users, HttpStatus.FOUND);
+            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    @GetMapping("/active-users")
+    public ResponseEntity<?> getAllActiveUsers() {
+        try {
+            List<User> users = adminService.getActiveUsers();
+            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -61,7 +72,7 @@ public class AdminController {
     public ResponseEntity<?> approveUser(@PathVariable UUID id) {
         try {
             adminService.approveUser(id, true);
-            return new ResponseEntity("user approved", HttpStatus.OK);
+            return new ResponseEntity(Map.of("message", "User approved"), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -71,7 +82,7 @@ public class AdminController {
     public ResponseEntity<?> rejectUser(@PathVariable UUID id) {
         try {
             adminService.rejectUser(id, false);
-            return new ResponseEntity("user rejected", HttpStatus.OK);
+            return new ResponseEntity(Map.of("message", "User rejected"), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -81,12 +92,10 @@ public class AdminController {
     public ResponseEntity<?> assignReceptionist(@RequestBody AssignReceptionistRequest request) {
         try {
             adminService.assignReceptionistToDoctor(request);
-            return new ResponseEntity("receptionist assigned", HttpStatus.OK);
+            return new ResponseEntity(Map.of("message", "Receptionist Assigned"), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-    
-    
     
 }

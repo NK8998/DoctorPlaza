@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class PatientVisitResponse {
     private UUID visitId;
+    private UUID patientId;
     private String patientName;
     private int patientAge;
     private String symptoms;
@@ -22,14 +23,23 @@ public class PatientVisitResponse {
     private Instant completedAt;
 
 
-    public PatientVisitResponse(UUID visitId, String patientName, int patientAge, String symptoms, VisitStatus status, Instant queuedAt, Instant completedAt) {
+    public PatientVisitResponse(UUID visitId, UUID patientId, String patientName, int patientAge, String symptoms, VisitStatus status, Instant queuedAt, Instant completedAt) {
         this.visitId = visitId;
+        this.patientId = patientId;
         this.patientName = patientName;
         this.patientAge = patientAge;
         this.symptoms = symptoms;
         this.status = status;
         this.queuedAt = queuedAt;
         this.completedAt = completedAt;
+    }
+
+    public UUID getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(UUID patientId) {
+        this.patientId = patientId;
     }
 
     public UUID getVisitId() {

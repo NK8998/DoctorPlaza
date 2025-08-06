@@ -21,6 +21,8 @@ import java.net.http.HttpRequest;
  */
 public class HttpService {
 
+    private static final String baseUrl = "http://localhost:8080";
+    
     private static final HttpClient client = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
             .build();
@@ -45,7 +47,7 @@ public class HttpService {
                 : HttpRequest.BodyPublishers.noBody();
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(baseUrl + url))
                 .header("Content-Type", "application/json");
 
         HttpRequest request = switch (method.toUpperCase()) {
