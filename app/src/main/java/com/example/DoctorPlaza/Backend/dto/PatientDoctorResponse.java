@@ -19,8 +19,9 @@ public class PatientDoctorResponse {
     private String symptoms;
     private Instant visitCreatedAt;
     private String doctorName;
+    private String followUp;
 
-    public PatientDoctorResponse(UUID id, String name, int age, String phoneNumber, String symptoms, Instant visitCreatedAt, String doctorName) {
+    public PatientDoctorResponse(UUID id, String name, int age, String phoneNumber, String symptoms, Instant visitCreatedAt, String doctorName, String followUp) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -28,6 +29,15 @@ public class PatientDoctorResponse {
         this.symptoms = symptoms;
         this.visitCreatedAt = visitCreatedAt;
         this.doctorName = doctorName;
+        this.followUp = followUp;
+    }
+
+    public String getFollowUp() {
+        return followUp;
+    }
+
+    public void setFollowUp(String followUp) {
+        this.followUp = followUp;
     }
 
     public UUID getId() {
