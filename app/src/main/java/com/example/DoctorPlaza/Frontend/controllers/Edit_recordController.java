@@ -105,7 +105,7 @@ public class Edit_recordController implements Initializable {
             return;
         }
         
-        String url = "http://localhost:8080/doctor/records/update/" + request.getRecordId();
+        String url = "/doctor/records/update/" + request.getRecordId();
 
         HttpTask<EditMedicalRecordRequest, EditMedicalRecordResponse> task = new HttpTask<>(
             url,
