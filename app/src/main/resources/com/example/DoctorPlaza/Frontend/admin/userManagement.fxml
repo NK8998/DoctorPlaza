@@ -26,7 +26,7 @@
 
             <Button fx:id="btnPendingApprovals" onAction="#handlePendingApprovals" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="⏳ Pending Approvals" />
 
-            <Button fx:id="btnUserManagement" onAction="#handleUserManagement" style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-size: 14px;" text="👥 User Management" />
+            <Button fx:id="btnUserManagement" onAction="#handleUserManagement" style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-background-radius: 4; -fx-font-size: 14px;" text="👥 User Management" />
 
             <Button fx:id="btnAssignReceptionist" onAction="#handleAssignReceptionist" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="🔄 Assign Receptionist" />
         </VBox>

@@ -15,7 +15,6 @@
     <left>
         <VBox prefWidth="220" spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;">
             <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold;" text="Admin Portal" />
-            <Label style="-fx-text-fill: #999;" text="Healthcare Management System" />
 
             <Button fx:id="btnAdminDashboard" onAction="#handleAdminDashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-font-size: 14px;" text="📊 Dashboard" />
 

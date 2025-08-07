@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.AdminDashboardController">
+<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@../../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.AdminDashboardController">
 
     <!-- Sidebar Navigation -->
     <left>
         <VBox prefWidth="200" spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;">
             <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold;" text="Admin Portal" />
-            <Button fx:id="btnAdminDashboard" onAction="#handleAdminDashboard" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="📊 Dashboard" />
-            <Button fx:id="btnPendingApprovals" onAction="#handlePendingApprovals" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="⏳ Pending Approvals" />
-            <Button fx:id="btnUserManagement" onAction="#handleUserManagement" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="👥 User Management" />
-            <Button fx:id="btnAssignReceptionist" onAction="#handleAssignReceptionist" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="🔄 Assign Receptionist" />
+            <Button fx:id="btnAdminDashboard" onAction="#handleAdminDashboard" style="-fx-text-fill: white; -fx-background-color: #c20000; -fx-font-size: 14px;" styleClass="navbar-link" text="📊 Dashboard" />
+            <Button fx:id="btnPendingApprovals" onAction="#handlePendingApprovals" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="⏳ Pending Approvals" />
+            <Button fx:id="btnUserManagement" onAction="#handleUserManagement" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="👥 User Management" />
+            <Button fx:id="btnAssignReceptionist" onAction="#handleAssignReceptionist" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="🔄 Assign Receptionist" />
         </VBox>
     </left>
    <center>
