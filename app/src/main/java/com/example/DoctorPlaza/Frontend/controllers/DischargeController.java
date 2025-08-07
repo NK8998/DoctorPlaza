@@ -162,7 +162,7 @@ public class DischargeController implements Initializable {
 
     @FXML
     private void handleDashboard(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionistDashboard.fxml", new ReceptionistDashboardController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/receptionistDashboard.fxml", new ReceptionistDashboardController());
     }
 
     @FXML

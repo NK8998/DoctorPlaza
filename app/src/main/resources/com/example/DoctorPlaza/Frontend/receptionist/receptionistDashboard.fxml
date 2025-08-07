@@ -11,19 +11,18 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-            prefWidth="1000" prefHeight="600" fx:controller="com.example.DoctorPlaza.Frontend.controllers.ReceptionistDashboardController">
+<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@../../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.ReceptionistDashboardController">
     <!-- Left Navigation Menu -->
     <left>
-        <VBox prefWidth="200" spacing="20" style="-fx-background-color: #fff; -fx-padding: 20;">
-            <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold;" text="Receptionist Portal" />
-            <Button fx:id="btnDashboard" onAction="#handleDashboard" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="📊 Dashboard" />
+        <VBox prefWidth="220.0" spacing="20" style="-fx-background-color: #fff; -fx-padding: 30;">
+            <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold; -fx-font-size: 18;" text="Receptionist" />
+            <Button fx:id="btnDashboard" maxWidth="1.7976931348623157E308" onAction="#handleDashboard" style="-fx-text-fill: white; -fx-background-color: #c20000; -fx-font-size: 14px;" styleClass="navbar-link" text="📊 Dashboard" VBox.vgrow="ALWAYS" />
 
-<Button fx:id="btnRegister" onAction="#handleRegister" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="➕ Register Patient" />
+<Button fx:id="btnRegister" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" onAction="#handleRegister" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="➕ Register Patient" VBox.vgrow="ALWAYS" />
 
-<Button fx:id="btnQueue" onAction="#handleQueue" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="👥 Queue Management" />
+<Button fx:id="btnQueue" maxWidth="1.7976931348623157E308" onAction="#handleQueue" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="👥 Queue Management" />
 
-<Button fx:id="btnDischarge" onAction="#handleDischarge" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" text="🧾 Discharge Patient" />
+<Button fx:id="btnDischarge" maxWidth="1.7976931348623157E308" onAction="#handleDischarge" style="-fx-text-fill: #c20000; -fx-background-color: transparent; -fx-font-size: 14px;" styleClass="navbar-link" text="✔ Discharge Patient" />
 
         </VBox>
     </left>

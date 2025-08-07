@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="700" prefWidth="1200" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.QueueManagementController">
+<BorderPane prefHeight="700" prefWidth="1200" stylesheets="@../../../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DoctorPlaza.Frontend.controllers.QueueManagementController">
 
     <!-- Sidebar -->
     <left>
         <VBox prefWidth="220" spacing="20" style="-fx-background-color: #f8f8f8; -fx-padding: 30;">
-            <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold;" text="Receptionist Portal" />
-            <Button fx:id="btnDashboard" onAction="#handleDashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" text="📊 Dashboard" />
+            <Label style="-fx-text-fill: #c20000; -fx-font-weight: bold; -fx-font-size: 18;" text="Receptionist" />
+            <Button fx:id="btnDashboard" onAction="#handleDashboard" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" styleClass="navbar-link" text="📊 Dashboard" />
 
-<Button fx:id="btnRegister" onAction="#handleRegister" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" text="➕ Register Patient" />
+<Button fx:id="btnRegister" onAction="#handleRegister" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" styleClass="navbar-link" text="➕ Register Patient" />
 
-<Button fx:id="btnQueue" onAction="#handleQueue" style="-fx-background-color: transparent; -fx-text-fill: #c20000; -fx-border-color: #c20000; -fx-border-width: 2; -fx-border-radius: 10;" text="👥 Queue Management" />
+<Button fx:id="btnQueue" onAction="#handleQueue" style="-fx-background-color: #c20000; -fx-text-fill: white; -fx-border-color: #c20000; -fx-border-width: 2; -fx-border-radius: 10;" styleClass="navbar-link" text="👥 Queue Management" />
 
-<Button fx:id="btnDischarge" onAction="#handleDischarge" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" text="🧾 Discharge Patient" />
+<Button fx:id="btnDischarge" onAction="#handleDischarge" style="-fx-background-color: transparent; -fx-text-fill: #c20000;" styleClass="navbar-link" text="✔ Discharge Patient" />
 
         </VBox>
     </left>

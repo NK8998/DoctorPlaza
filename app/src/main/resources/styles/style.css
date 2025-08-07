@@ -79,3 +79,10 @@
 }
 /* Welcome & Header Labels */
 
+.navbar-link {
+    -fx-font-size: 14px;
+    -fx-text-fill: #c20000;
+    -fx-alignment: top-left;
+    -fx-max-width: Infinity;
+    -fx-pref-width: Infinity;
+}
