@@ -202,12 +202,9 @@ public class Patient_queueController implements Initializable {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/add_record.fxml", new Add_recordController());
     }
 
-    private void handleEditRecord(ActionEvent event) {
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
-    }
-
     @FXML
     private void handleEditRecords(ActionEvent event) {
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/edit_record.fxml", new Edit_recordController());
     }
 
     

@@ -202,7 +202,7 @@ public class AssignReceptionistController implements Initializable {
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
         // Navigation logic
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
 
     }
 

@@ -247,7 +247,7 @@ public class QueueManagementController implements Initializable {
 
     @FXML
     private void handleDischarge(ActionEvent event) {
-     SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/registerPatient.fxml", new DischargeController());
+     SceneManager.switchScene("com/example/DoctorPlaza/Frontend/receptionist/Discharge.fxml", new DischargeController());
     } 
     
 }

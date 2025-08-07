@@ -213,7 +213,6 @@ public class PendingApprovalsController implements Initializable {
 
     private void handlePendingApprovals(ActionEvent event) {
         System.out.println("alradey in Pending Approvals page");
-        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
     }
 
     @FXML

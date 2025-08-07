@@ -169,7 +169,7 @@ public class Add_recordController implements Initializable {
 
    @FXML
 
-       private void handleDashboard(ActionEvent event) {
+    private void handleDashboard(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/dashboard.fxml", new DoctorDashboardController());
     }
 
