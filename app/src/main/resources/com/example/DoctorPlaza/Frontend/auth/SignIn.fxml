@@ -154,7 +154,7 @@
             </GridPane>
             <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(227,64,75,1) 60%, rgba(250,65,121,1) 100%);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
-                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;" text="Welcome to login" textAlignment="CENTER">
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;" text="Welcome to Doctor Plaza" textAlignment="CENTER">
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
