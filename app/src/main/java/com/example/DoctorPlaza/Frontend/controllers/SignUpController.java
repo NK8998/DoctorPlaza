@@ -7,6 +7,7 @@ import com.example.DoctorPlaza.Frontend.dto.SignupRequest;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.service.HttpService;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
+import static com.example.DoctorPlaza.Frontend.utils.Utils.showInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URL;
 import java.util.Arrays;
@@ -129,18 +130,23 @@ public class SignUpController implements Initializable {
         );
         
         task.setOnSucceeded(e -> {
+            signUpBtn.setDisable(true);
+
             UserResponse response = task.getValue();
-            // Do something with response
             System.out.println("Success: " + response);
+            // Do something with response
+            if(response.getIsActive()){
+                UserSession session = UserSession.getInstance();
+                session.setUserId(response.getId());
+                session.setName(response.getName());
+                session.setEmail(response.getEmail());
+                session.setRole(response.getRole());
             
-            UserSession session = UserSession.getInstance();
-            session.setUserId(response.getId());
-            session.setName(response.getName());
-            session.setEmail(response.getEmail());
-            session.setRole(response.getRole());
             
-            
-            navigate(response.getRole());
+                navigate(response.getRole());
+            }else{
+                showInfo("Sign up was successful. Wait for your Approval");
+            }
         });
         
         task.setOnFailed(e -> {

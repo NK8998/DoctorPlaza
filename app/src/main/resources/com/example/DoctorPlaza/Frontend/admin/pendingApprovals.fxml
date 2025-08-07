@@ -41,11 +41,11 @@
                     <Label style="-fx-text-fill: #666;" text="Review and approve user registration requests" />
                 </VBox>
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 4 12 4 12; -fx-background-radius: 20;" text="4 Pending" />
+                <Label fx:id="lblPending" style="-fx-background-color: #f24153; -fx-text-fill: white; -fx-padding: 4 12 4 12; -fx-background-radius: 20;" text="4 Pending" />
             </HBox>
 
                         <!-- Search Bar -->
-            <TextField promptText="Search by name, email, or role..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10;" />
+            <TextField fx:id="txtFilter" promptText="Search by name, email, or role..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10;" />
          <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="500.0">
             <content>
                <VBox fx:id="pendingApprovalsContainer" prefHeight="200.0" prefWidth="100.0" spacing="20.0">

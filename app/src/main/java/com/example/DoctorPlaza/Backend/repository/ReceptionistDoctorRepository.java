@@ -26,11 +26,11 @@ public interface ReceptionistDoctorRepository extends JpaRepository<Receptionist
     @Query("SELECT rd.receptionist FROM ReceptionistDoctor rd WHERE rd.doctor.id = :doctorId")
     List<Receptionist> findReceptionistsByDoctorId(@Param("doctorId") UUID doctorId);
     
-    @Query("SELECT new com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse"
-       + "(d.id, d.name, d.email, d.passwordHash, d.role, d.isActive, d.specialization, d.bio, COUNT(v.id)) " +
+    @Query("SELECT new com.example.DoctorPlaza.Backend.dto.AssignedDoctorsResponse" +
+           "(d.id, d.name, d.email, d.passwordHash, d.role, d.isActive, d.specialization, d.bio, COUNT(v.id)) " +
            "FROM Doctor d " +
            "JOIN ReceptionistDoctor rd ON d.id = rd.doctor.id " +
-           "LEFT JOIN Visit v ON d.id = v.doctor.id " +
+           "LEFT JOIN Visit v ON d.id = v.doctor.id AND v.status = 'WAITING' " +
            "WHERE rd.receptionist.id = :receptionistId " +
            "GROUP BY d.id, d.name, d.email, d.passwordHash, d.role, d.isActive, d.specialization, d.bio")
     List<AssignedDoctorsResponse> findDoctorsWithPatientCountByReceptionistId(@Param("receptionistId") UUID receptionistId);

@@ -7,6 +7,7 @@ package com.example.DoctorPlaza.Frontend.controllers;
 import com.example.DoctorPlaza.Frontend.SceneManager;
 
 import com.example.DoctorPlaza.Frontend.dto.AllUsersResponse;
+import com.example.DoctorPlaza.Frontend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Frontend.dto.StringMessageResponse;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import static com.example.DoctorPlaza.Frontend.utils.Utils.showError;
@@ -14,9 +15,11 @@ import static com.example.DoctorPlaza.Frontend.utils.Utils.showInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -41,13 +45,18 @@ public class PendingApprovalsController implements Initializable {
    @FXML
     private Button btnAdminDashboard;
     @FXML
-    private Button btnPendingApprovals;
-    @FXML
     private Button btnUserManagement;
     @FXML
     private Button btnAssignReceptionist;
     @FXML
     private VBox pendingApprovalsContainer;
+    @FXML
+    private TextField txtFilter;
+    @FXML
+    private Label lblPending;
+
+    List<AllUsersResponse> users = new ArrayList<>();
+
 
     /**
      * Initializes the controller class.
@@ -56,6 +65,18 @@ public class PendingApprovalsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fetchPendingApprovals();
+        
+                txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            List<AllUsersResponse> filtered = users.stream()
+                .filter(p -> p.getName().toLowerCase().contains(newValue.toLowerCase()))
+                .collect(Collectors.toList());
+
+            pendingApprovalsContainer.getChildren().clear();
+            for (AllUsersResponse user : filtered) {
+                VBox card = createUserCard(user);
+                pendingApprovalsContainer.getChildren().add(card);
+            }
+        });
     }   
     
     private void fetchPendingApprovals() {
@@ -67,8 +88,8 @@ public class PendingApprovalsController implements Initializable {
         );
 
         task.setOnSucceeded(e -> {
-            List<AllUsersResponse> users = task.getValue();
-            renderPendingUsers(users);
+            users = task.getValue();
+            renderPendingUsers();
         });
 
         task.setOnFailed(e -> {
@@ -78,8 +99,9 @@ public class PendingApprovalsController implements Initializable {
         new Thread(task).start();
     }
     
-    private void renderPendingUsers(List<AllUsersResponse> users) {
+    private void renderPendingUsers() {
         Platform.runLater(() -> {
+            lblPending.setText(users.size() + "Pending");
             pendingApprovalsContainer.getChildren().clear();
 
             for (AllUsersResponse user : users) {
@@ -189,11 +211,9 @@ public class PendingApprovalsController implements Initializable {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
     }
 
-    @FXML
     private void handlePendingApprovals(ActionEvent event) {
         System.out.println("alradey in Pending Approvals page");
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
-
     }
 
     @FXML
@@ -204,7 +224,6 @@ public class PendingApprovalsController implements Initializable {
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
-
     }
     
 }

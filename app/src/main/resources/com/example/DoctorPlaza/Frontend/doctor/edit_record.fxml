@@ -35,7 +35,7 @@
                         <!-- Search Field -->
             <VBox spacing="10" style="-fx-background-color: #fefefe; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #ddd;">
                 <Label style="-fx-font-weight: bold;" text="🔍 Find Records" />
-                <TextField promptText="Search by patient name, diagnosis, or date..." />
+                <TextField fx:id="txtFilter" promptText="Search by patient name, diagnosis, or date..." />
             <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="420.0">
                <content>
                   <VBox fx:id="recordsContainer" prefHeight="200.0" prefWidth="100.0">
@@ -69,24 +69,24 @@
                                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0">
                                     <children>
                                        <Label prefWidth="70.0" text="Diagnosis:" />
-                                       <TextField fx:id="txtEditDiagnosis" HBox.hgrow="ALWAYS" />
+                                       <TextField HBox.hgrow="ALWAYS" />
                                     </children>
                                  </HBox>
                                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0">
                                     <children>
                                        <Label prefWidth="70.0" text="Prescription:" />
-                                       <TextField fx:id="txtEditPrescription" HBox.hgrow="ALWAYS" />
+                                       <TextField HBox.hgrow="ALWAYS" />
                                     </children>
                                  </HBox>
                                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0">
                                     <children>
                                        <Label prefWidth="70.0" text="Follow Up:" />
-                                       <TextField fx:id="txtEditFollowUp" HBox.hgrow="ALWAYS" />
+                                       <TextField HBox.hgrow="ALWAYS" />
                                     </children>
                                  </HBox>
                                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                     <children>
-                                       <Button fx:id="btnSave" mnemonicParsing="false" text="Save" />
+                                       <Button mnemonicParsing="false" text="Save" />
                                     </children>
                                  </HBox>
                               </children>
