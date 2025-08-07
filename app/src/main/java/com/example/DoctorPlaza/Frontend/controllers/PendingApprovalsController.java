@@ -186,29 +186,23 @@ public class PendingApprovalsController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
+        SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
     }
 
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
         System.out.println("alradey in Pending Approvals page");
-
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
 
     }
 
     @FXML
     private void handleUserManagement(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
-
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/userManagement.fxml", new UserManagementController());
-
     }
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
-
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
 
     }

@@ -183,6 +183,7 @@ public class AssignReceptionistController implements Initializable {
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
         // Navigation logic
+                SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
     }
 
     @FXML

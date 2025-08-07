@@ -190,8 +190,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
-
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
 
@@ -199,8 +197,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
-
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
 
@@ -214,7 +210,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
     }
