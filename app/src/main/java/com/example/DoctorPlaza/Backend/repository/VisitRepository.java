@@ -55,15 +55,18 @@ public interface VisitRepository extends JpaRepository<Visit, UUID> {
             p.phoneNumber,
             p.symptoms,
             v.queuedAt,
-            d.name
+            d.name,
+            m.followUp
         )
         FROM Visit v
         JOIN v.patient p
         JOIN v.doctor d
+        LEFT JOIN MedicalRecord m ON m.visit = v
         WHERE v.status = 'WAITING'
         AND p.receptionistId = :receptionistId
     """)
     List<PatientDoctorResponse> getPatientsInQueue(@Param("receptionistId") UUID receptionistId);
+
     
     @Query(value = """
         SELECT 
