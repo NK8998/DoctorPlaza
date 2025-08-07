@@ -99,6 +99,7 @@ public class DoctorServiceImpl implements DoctorService {
             .orElseThrow(() -> new IllegalArgumentException("Record not found or doctor not authorized"));
 
         record.setNotes(request.getNotes());
+        record.setPrescription(request.getPrescription());
         record.setDiagnosis(request.getDiagnosis());
         record.setFollowUp(request.getFollowUp());
 

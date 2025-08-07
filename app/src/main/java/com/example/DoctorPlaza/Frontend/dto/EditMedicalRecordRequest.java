@@ -4,7 +4,6 @@
  */
 package com.example.DoctorPlaza.Frontend.dto;
 
-import com.example.DoctorPlaza.Backend.dto.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -30,6 +29,16 @@ public class EditMedicalRecordRequest {
 
     @NotBlank(message = "Prescription cannot be blank")
     private String prescription;
+    
+    private String followUp;
+
+    public String getFollowUp() {
+        return followUp;
+    }
+
+    public void setFollowUp(String followUp) {
+        this.followUp = followUp;
+    }
 
     // Getters and Setters
 

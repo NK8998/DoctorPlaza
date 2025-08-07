@@ -49,7 +49,7 @@ public interface VisitRepository extends JpaRepository<Visit, UUID> {
     
     @Query("""
         SELECT new com.example.DoctorPlaza.Backend.dto.PatientDoctorResponse(
-            p.id,
+            v.id,
             p.name,
             p.age,
             p.phoneNumber,

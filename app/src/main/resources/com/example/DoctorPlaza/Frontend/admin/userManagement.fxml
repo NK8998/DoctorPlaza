@@ -65,7 +65,7 @@
             <HBox spacing="15">
                 <TextField fx:id="txtSearchUsers" promptText="Search users..." style="-fx-background-radius: 10; -fx-padding: 5;" />
                 <ComboBox fx:id="rolesComboBox" prefWidth="150" promptText="All Roles" />
-                <ComboBox fx:id="StatusComboBox" prefWidth="150" promptText="All Status" />
+                <ComboBox fx:id="statusComboBox" prefWidth="150" promptText="All Status" />
             </HBox>
          <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="400.0">
             <content>

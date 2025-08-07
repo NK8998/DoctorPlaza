@@ -115,7 +115,7 @@ public class ReceptionistController {
     public ResponseEntity<?> markVisitAsComplete(@PathVariable UUID id) {
         try {
             receptionistService.markPatientVisitAsComplete(id);
-            return new ResponseEntity("Patient visit marked as complete", HttpStatus.OK);
+            return new ResponseEntity(Map.of("message", "Patient visit marked as complete"), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

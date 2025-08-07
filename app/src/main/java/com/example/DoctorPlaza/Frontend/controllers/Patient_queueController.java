@@ -8,6 +8,7 @@ import com.example.DoctorPlaza.Frontend.Enums.VisitStatus;
 import com.example.DoctorPlaza.Frontend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Frontend.SceneManager;
 import com.example.DoctorPlaza.Frontend.UserSession;
+import com.example.DoctorPlaza.Frontend.dto.GetMedicalRecordResponse;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import static com.example.DoctorPlaza.Frontend.utils.Utils.formatDuration;
 import static com.example.DoctorPlaza.Frontend.utils.Utils.formatTime;
@@ -18,12 +19,14 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -41,13 +44,11 @@ public class Patient_queueController implements Initializable {
     @FXML
     private Button btnPatientQueue;
     @FXML
-    private Button btnPatientHistory;
-    @FXML
-    private Button btnAddRecord;
-    @FXML
     private Button btnEditRecord;
     @FXML
     private VBox patientQueueContainer;
+    @FXML
+    private TextField txtFilter;
     
     private List<PatientVisitResponse> queued = new ArrayList();
 
@@ -58,6 +59,18 @@ public class Patient_queueController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getDoctorQueue();
+        
+        txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            List<PatientVisitResponse> filtered = queued.stream()
+                .filter(p -> p.getPatientName().toLowerCase().contains(newValue.toLowerCase()))
+                .collect(Collectors.toList());
+
+            patientQueueContainer.getChildren().clear();
+             for (PatientVisitResponse visit : filtered) {
+                HBox recordBox = createElement(visit);
+                patientQueueContainer.getChildren().add(recordBox);
+            }
+        });
     }    
     
     private void getDoctorQueue() {
@@ -95,6 +108,14 @@ public class Patient_queueController implements Initializable {
         patientQueueContainer.getChildren().clear();
 
         for (PatientVisitResponse visit : queued) {
+
+            HBox row = createElement(visit);
+            // Add to container
+            patientQueueContainer.getChildren().add(row);
+        }
+    }
+
+    private HBox createElement(PatientVisitResponse visit){
             // Name & Reason VBox
             Label nameLabel = new Label(visit.getPatientName());
             nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
@@ -161,12 +182,10 @@ public class Patient_queueController implements Initializable {
             HBox row = new HBox(15, nameReasonBox, spacer, rightBox);
             row.setStyle("-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #ddd;");
             row.setAlignment(Pos.CENTER_LEFT);
-
-            // Add to container
-            patientQueueContainer.getChildren().add(row);
-        }
+            
+            return row;
+                 
     }
-
 
     @FXML
      private void handleDashboard(ActionEvent event) {
@@ -179,7 +198,6 @@ public class Patient_queueController implements Initializable {
         System.out.println("Already on Patient Queue page. ");
     }
     
-    @FXML
     private void handleAddRecord(ActionEvent event) {
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/doctor/add_record.fxml", new Add_recordController());
     }
@@ -192,9 +210,6 @@ public class Patient_queueController implements Initializable {
     private void handleEditRecords(ActionEvent event) {
     }
 
-    @FXML
-    private void handlePatientHistory(ActionEvent event) {
-    }
     
     
 }

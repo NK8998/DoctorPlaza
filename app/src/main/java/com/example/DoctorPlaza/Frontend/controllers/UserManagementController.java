@@ -4,15 +4,19 @@
  */
 package com.example.DoctorPlaza.Frontend.controllers;
 
+import com.example.DoctorPlaza.Frontend.Enums.UserRole;
 import com.example.DoctorPlaza.Frontend.SceneManager;
 
 import com.example.DoctorPlaza.Frontend.dto.AllUsersResponse;
+import com.example.DoctorPlaza.Frontend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Frontend.dto.UserResponse;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,17 +62,55 @@ public class UserManagementController implements Initializable {
     @FXML
     private ComboBox<String> rolesComboBox;
     @FXML
-    private ComboBox<String> StatusComboBox;
-    @FXML
     private VBox usersContainer;
+    @FXML
+    private ComboBox<String> statusComboBox;
+    
+    List<AllUsersResponse> users = new ArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rolesComboBox.getItems().addAll("admin", "doctor", "receptionist");
-        StatusComboBox.getItems().addAll("active", "inactive");
+        rolesComboBox.getItems().addAll("all", "admin", "doctor", "receptionist");
+        statusComboBox.getItems().addAll("all", "active", "inactive");
 
         fetchUsers();
+        
+        txtSearchUsers.textProperty().addListener((obs, oldVal, newVal) -> applyFilters());
+        rolesComboBox.valueProperty().addListener((obs, oldVal, newVal) -> applyFilters());
+        statusComboBox.valueProperty().addListener((obs, oldVal, newVal) -> applyFilters());
     }
+    
+    private void applyFilters() {
+        String searchText = txtSearchUsers.getText().toLowerCase();
+        String selectedRole = rolesComboBox.getValue();
+        String selectedStatus = statusComboBox.getValue();
+
+        List<AllUsersResponse> filtered = users.stream()
+            .filter(user -> user.getName().toLowerCase().contains(searchText))
+            .filter(user -> {
+                if (selectedRole == null || selectedRole.equalsIgnoreCase("all")) return true;
+                try {
+                    return user.getRole() == UserRole.valueOf(selectedRole.toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    return false;
+                }
+            })
+            .filter(user -> {
+                if (selectedStatus == null || selectedStatus.equalsIgnoreCase("all")) return true;
+                boolean isActive = selectedStatus.equalsIgnoreCase("active");
+                return user.getIsActive() == isActive;
+            })
+            .collect(Collectors.toList());
+
+        usersContainer.getChildren().clear();
+        for (AllUsersResponse user : filtered) {
+            VBox userCard = createUserCard(user);
+            usersContainer.getChildren().add(userCard);
+        }
+    }
+
+
+
 
     private void fetchUsers() {
         HttpTask<Void, List<AllUsersResponse>> task = new HttpTask<>(
@@ -79,10 +121,10 @@ public class UserManagementController implements Initializable {
         );
 
         task.setOnSucceeded(e -> {
-            List<AllUsersResponse> users = task.getValue();
+           users = task.getValue();
             if (users != null) {
-                updateUserStats(users);
-                populateUsers(users);
+                updateUserStats();
+                populateUsers();
             }
         });
 
@@ -93,7 +135,7 @@ public class UserManagementController implements Initializable {
         new Thread(task).start();
     }
 
-    private void updateUserStats(List<AllUsersResponse> users) {
+    private void updateUserStats() {
         long total = users.size();
         long doctors = users.stream().filter(u -> "doctor".equalsIgnoreCase(u.getRole().toString())).count();
         long receptionists = users.stream().filter(u -> "receptionist".equalsIgnoreCase(u.getRole().toString())).count();
@@ -105,7 +147,7 @@ public class UserManagementController implements Initializable {
         lblActive.setText(String.valueOf(active));
     }
 
-    private void populateUsers(List<AllUsersResponse> users) {
+    private void populateUsers() {
         Platform.runLater(() -> {
             usersContainer.getChildren().clear();
             for (AllUsersResponse user : users) {
@@ -190,8 +232,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handleAdminDashboard(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
-
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/adminDashboard.fxml", new AdminDashboardController());
 
@@ -199,8 +239,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handlePendingApprovals(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
-
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/pendingApprovals.fxml", new PendingApprovalsController());
 
@@ -214,7 +252,6 @@ public class UserManagementController implements Initializable {
 
     @FXML
     private void handleAssignReceptionist(ActionEvent event) {
-        SceneManager.switchScene("/com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
         // Add navigation logic here
         SceneManager.switchScene("com/example/DoctorPlaza/Frontend/admin/assignReceptionist.fxml", new AssignReceptionistController());
     }

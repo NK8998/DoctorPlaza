@@ -100,13 +100,13 @@ public class AssignReceptionistController implements Initializable {
         );
 
         task.setOnSucceeded(e -> {
-            showInfo("Receptionist successfully assinged");
+            showInfo(task.getValue().getMessage());
             btnAssignReceptionist.setDisable(false);
         });
 
         task.setOnFailed(e -> {
             btnAssignReceptionist.setDisable(false);
-            showError("Failed to assign receptionist");
+            showError("Failed to assign receptionist\n");
             System.err.println("Failed to assign receptionist: " + task.getException());
         });
         

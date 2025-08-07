@@ -36,7 +36,7 @@
             <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #ddd;">
                 <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="📍 Queue Management" />
                 <HBox spacing="10">
-                    <TextField prefWidth="600" promptText="Search patients or reason..." />
+                    <TextField fx:id="txtFilter" prefWidth="600" promptText="Search patients or reason..." />
                     <ComboBox prefWidth="150" promptText="All Patients" />
                 </HBox>
             </VBox>

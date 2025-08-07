@@ -9,6 +9,7 @@ import com.example.DoctorPlaza.Frontend.UserSession;
 import com.example.DoctorPlaza.Frontend.dto.EditMedicalRecordRequest;
 import com.example.DoctorPlaza.Frontend.dto.EditMedicalRecordResponse;
 import com.example.DoctorPlaza.Frontend.dto.GetMedicalRecordResponse;
+import com.example.DoctorPlaza.Frontend.dto.PatientDoctorResponse;
 import com.example.DoctorPlaza.Frontend.dto.PatientVisitResponse;
 import com.example.DoctorPlaza.Frontend.tasks.HttpTask;
 import com.example.DoctorPlaza.Frontend.utils.Utils;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,16 +52,10 @@ public class Edit_recordController implements Initializable {
     private VBox recordsContainer;
     @FXML
     private VBox editContainer;
+    @FXML
+    private TextField txtFilter;
     
     List<GetMedicalRecordResponse> list = new ArrayList<>();
-    @FXML
-    private TextField txtEditDiagnosis;
-    @FXML
-    private TextField txtEditPrescription;
-    @FXML
-    private TextField txtEditFollowUp;
-    @FXML
-    private Button btnSave;
 
     /**
      * Initializes the controller class.
@@ -68,6 +64,18 @@ public class Edit_recordController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getRecords();
+        
+        txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            List<GetMedicalRecordResponse> filtered = list.stream()
+                .filter(p -> p.getName().toLowerCase().contains(newValue.toLowerCase()))
+                .collect(Collectors.toList());
+
+            recordsContainer.getChildren().clear();
+             for (GetMedicalRecordResponse record : filtered) {
+                VBox recordBox = createRecord(record);
+                recordsContainer.getChildren().add(recordBox);
+            }
+        });
     }    
     
     
@@ -132,6 +140,13 @@ public class Edit_recordController implements Initializable {
             recordsContainer.getChildren().clear();
 
             for (GetMedicalRecordResponse record : list) {
+                VBox recordBox = createRecord(record);
+                recordsContainer.getChildren().add(recordBox);
+            }
+        });
+    }
+    
+    private VBox createRecord(GetMedicalRecordResponse record){
                 VBox recordBox = new VBox(10);
                 recordBox.setStyle("-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #ddd;");
 
@@ -180,14 +195,7 @@ public class Edit_recordController implements Initializable {
                 editContainer.setVisible(false);
                 editContainer.setManaged(false); // Hides space when invisible
 
-                // Diagnosis Field
-                HBox diagEdit = new HBox(60);
-                diagEdit.setAlignment(Pos.CENTER);
-                Label diagLabel = new Label("Diagnosis:");
-                diagLabel.setPrefWidth(70);
-                TextField txtEditDiagnosis = new TextField(record.getDiagnosis());
-                HBox.setHgrow(txtEditDiagnosis, Priority.ALWAYS);
-                diagEdit.getChildren().addAll(diagLabel, txtEditDiagnosis);
+
 
                 // Prescription Field
                 HBox prescEdit = new HBox(60);
@@ -199,13 +207,22 @@ public class Edit_recordController implements Initializable {
                 prescEdit.getChildren().addAll(prescLabel, txtEditPrescription);
 
                 // Notes Field
+                HBox notesEdit = new HBox(60);
+                notesEdit.setAlignment(Pos.CENTER);
+                Label notesLabel = new Label("Notes:");
+                notesLabel.setPrefWidth(70);
+                TextField txtEditNotes = new TextField(record.getNotes());
+                HBox.setHgrow(txtEditNotes, Priority.ALWAYS);
+                notesEdit.getChildren().addAll(notesLabel, txtEditNotes);
+                
+                // Follow up Field
                 HBox followUpEdit = new HBox(60);
                 followUpEdit.setAlignment(Pos.CENTER);
-                Label followLabel = new Label("Notes:");
+                Label followLabel = new Label("Follow Up:");
                 followLabel.setPrefWidth(70);
-                TextField txtEditNotes = new TextField(record.getFollowUp());
-                HBox.setHgrow(txtEditNotes, Priority.ALWAYS);
-                followUpEdit.getChildren().addAll(followLabel, txtEditNotes);
+                TextField txtEditFollowUp = new TextField(record.getFollowUp());
+                HBox.setHgrow(txtEditFollowUp, Priority.ALWAYS);
+                followUpEdit.getChildren().addAll(followLabel, txtEditFollowUp);
 
                 // Save Button
                 HBox saveBox = new HBox();
@@ -214,19 +231,22 @@ public class Edit_recordController implements Initializable {
 
                 btnSave.setOnAction(evt -> {
                     // You can send updated fields to backend here
-                    String updatedDiagnosis = txtEditDiagnosis.getText();
                     String updatedPrescription = txtEditPrescription.getText();
                     String updatedNotes = txtEditNotes.getText();
+                    String updatedFollowUp = txtEditFollowUp.getText();
 
                     // Build request and send update via HttpTask (you have infra for this already)
                     System.out.println("Saving for " + record.getName());
-                    System.out.println("New Diagnosis: " + updatedDiagnosis);
+                    System.out.println("New Notes: " + updatedNotes);
+                    System.out.println("New prescription" + updatedPrescription);
+                    System.out.println("New Follow Up: " + updatedFollowUp);
                     
                     EditMedicalRecordRequest request = new EditMedicalRecordRequest();
                     request.setRecordId(record.getId());
                     request.setDoctorId(record.getDoctorId());
+                    request.setDiagnosis(record.getDiagnosis());
                     request.setNotes(updatedNotes);
-                    request.setDiagnosis(updatedDiagnosis);
+                    request.setFollowUp(updatedFollowUp);
                     request.setPrescription(updatedPrescription);
                     updateRecord(request);
                     // [Send to server]
@@ -235,7 +255,7 @@ public class Edit_recordController implements Initializable {
                 saveBox.getChildren().add(btnSave);
 
                 // Add everything to edit container
-                editContainer.getChildren().addAll(diagEdit, prescEdit, followUpEdit, saveBox);
+                editContainer.getChildren().addAll(prescEdit, notesEdit, followUpEdit, saveBox);
 
                 // Toggle visibility on edit
                 editButton.setOnAction(evt -> {
@@ -246,11 +266,9 @@ public class Edit_recordController implements Initializable {
 
                 // Add everything to record box
                 recordBox.getChildren().addAll(header, diagnosisBox, notesBox, medsBox, editContainer);
-
-                // Add to main container
-                recordsContainer.getChildren().add(recordBox);
-            }
-        });
+                
+                return recordBox;
+        
     }
 
     
